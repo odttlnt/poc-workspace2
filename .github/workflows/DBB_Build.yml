@@ -27,8 +27,8 @@ jobs:
         runs-on: self-hosted
         env: 
             MyRepo:      git@github.com:${{ github.repository }}.git
-            MyWorkDir:   tmp/ghActions/${{ github.run.id }}/run_${{ github.run.number }}
-            MyWorkSpace: ${{ github.run.id }}    
+            MyWorkDir:   tmp/ghActions/${{ github.run_id }}/run_${{ github.run_number }}
+            MyWorkSpace: ${{ github.run_id }}    
             MyBranch:    ${{ github.ref }}
                     
         steps:
