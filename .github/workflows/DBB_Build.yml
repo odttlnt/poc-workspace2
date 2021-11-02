@@ -6,6 +6,6 @@ jobs:
   Build_to_USS:
     runs-on: self-hosted  
     env:
-      DBB_Host:  ssh nlopez@tvt6031.svl.ibm.com   
+      DBB_Host:  'ssh nlopez@tvt6031.svl.ibm.com  ls'
     steps:
-      - run: $DBB_Host ls
+      - run: $DBB_Host 
