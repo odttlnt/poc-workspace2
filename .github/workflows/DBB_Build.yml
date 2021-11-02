@@ -8,6 +8,7 @@ Build_on_zOS:
     runs-on: self-hosted  
     env:
       DBB_Host:  'nlopez@tvt6031.svl.ibm.com'    
+      
     steps:
-      name: "build "
-      run: "ssh $DBB_Host  ls "
+      - name: "build "
+      - run: "ssh $DBB_Host  ls "
