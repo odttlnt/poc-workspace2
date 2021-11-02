@@ -5,5 +5,7 @@ on: workflow_dispatch
 jobs:
   Build_to_USS:
     runs-on: self-hosted  
+    env:
+      DBB_Host:  ssh nlopez@tvt6031.svl.ibm.com  ls 
     steps:
-      - run: ssh nlopez@tvt6031.svl.ibm.com  ls 
+      - run: $DBB_Host
