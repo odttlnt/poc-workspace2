@@ -7,14 +7,15 @@ name: Demo-DBB_Build_on_ZOS_With_GitHub_Actions
 #  CI pipeline:    Use the simple workflow option to design a new actions yaml file like below
 # /* 
 
-# the on trigger is for manually starting the workflow from the runer (agent)
-# add repo events like pull, push...
+# Global vars
 env:
     DBB_Host:  'nlopez@tvt6031.svl.ibm.com'    
-  
-on:   workflow_dispatch
-jobs: 
-    
+
+# the on trigger is for manually starting the workflow from the runer (agent)
+# add repo events like pull, push...  
+on: workflow_dispatch
+
+jobs:     
     Build_on_zOS:    
         runs-on: self-hosted        
         steps:
