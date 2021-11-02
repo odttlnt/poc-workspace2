@@ -1,8 +1,8 @@
 name: learn-github-actions
-on: [push]
+on: [commit]
 jobs:
   check-bats-version:
-    runs-on: self-hosted, tvt6031-runner
+    runs-on: self-hosted 
     steps:
       - uses: actions/checkout@v2
       - run: ls
