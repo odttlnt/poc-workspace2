@@ -6,4 +6,4 @@ jobs:
   Build_to_USS:
     runs-on: self-hosted  
     steps:
-      - run: set
+      - run: ssh nlopez@tvt6031.svl.ibm.com  ls 
