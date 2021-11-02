@@ -4,9 +4,10 @@ name: Demo-DBB_Build_on_ZOS_With_GitHub_Actions
 on:   workflow_dispatch
 
 Build_on_zOS:
-    runs-on: self-hosted  
-    env:
-      DBB_Host:  'nlopez@tvt6031.svl.ibm.com'    
+    jobs:
+        runs-on: self-hosted  
+        env:
+            DBB_Host:  'nlopez@tvt6031.svl.ibm.com'    
       
-    steps:
-      - run: "ssh $DBB_Host  ls "
+        steps:
+            - run: "ssh $DBB_Host  ls "
