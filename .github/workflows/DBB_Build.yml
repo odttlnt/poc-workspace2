@@ -10,4 +10,4 @@ jobs:
             DBB_Host:  'nlopez@tvt6031.svl.ibm.com'    
       
         steps:
-            - run: "ssh $DBB_Host  ls "
+            - run: ssh $DBB_Host  ls 
