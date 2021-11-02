@@ -6,6 +6,6 @@ jobs:
   Build_to_USS:
     runs-on: self-hosted 
     steps:      
-      - run: echo 'clone v2 ${{ github.run.id }} '
+      - run: echo 'clone v2 ${{ GITHUB_REF }} '
       - run: echo 'DBB Build'
       - run: echo 'Publish Artifacts'
