@@ -13,7 +13,7 @@ env:
     DBB_Host:  'ssh nlopez@tvt6031.svl.ibm.com'    
     
     # scripts on z/OS (SSH user's Home Dir in Unix - USS) 
-    Clone:      ${{ env.DBB_Host  env.Clone }} 'All-pipeline-scripts/AzRocketGit-init.sh'
+    Clone:      ${{ env.DBB_Host  }} 'All-pipeline-scripts/AzRocketGit-init.sh'
     DBB_Build:  'All-pipeline-scripts/AzDBB-build.sh'
     Publish:    'All-pipeline-scripts/AzPublishUCD.sh'
     
