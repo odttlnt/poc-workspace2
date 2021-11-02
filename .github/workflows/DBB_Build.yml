@@ -17,11 +17,10 @@ env:
     Publish:    'All-pipeline-scripts/AzPublishUCD.sh'
     
     MyRepo:      git@github.com:${{ github.repository }}.git
-    MyBranch:    ${{ github.ref }}
-    MyWorkSpace: ${{ github.run.id }}
     MyWorkDir:   tmp/ghActions/${{ github.run.id }}
-
-
+    MyWorkSpace: ${{ github.run.id }}    
+    MyBranch:    ${{ github.ref }}
+    
 # the on trigger is for manually starting the workflow from the runner (agent)
 # add repo events like pull, push...  
 on: workflow_dispatch
@@ -30,5 +29,6 @@ jobs:
     Build_on_zOS:    
         runs-on: self-hosted        
         steps:
+            - run: gci env:* | sort-object name
             - run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }} 
              
