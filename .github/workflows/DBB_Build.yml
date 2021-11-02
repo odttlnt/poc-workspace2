@@ -18,7 +18,7 @@ env:
     
     MyRepo:      git@github.com:${{ github.repository }}.git
     MyWorkDir:   tmp/ghActions/${{ github.run.id }}
-    MyWorkSpace: ${{ github.run.id }}    
+    MyWorkSpace: ${{ github.run.id }}_${{ github.run.number }}    
     MyBranch:    ${{ github.ref }}
     
 # the on trigger is for manually starting the workflow from the runner (agent)
