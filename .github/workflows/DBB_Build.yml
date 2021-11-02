@@ -6,6 +6,7 @@ jobs:
   Build_to_USS:
     runs-on: self-hosted 
     steps:      
-      - run: echo 'clone v2'  $RUNNER_WORKSPACE 
-      - run: echo 'DBB Build'
-      - run: echo 'Publish Artifacts'
+      - run: |
+        echo 'clone v2'  $RUNNER_WORKSPACE 
+        echo 'DBB Build'
+        env
