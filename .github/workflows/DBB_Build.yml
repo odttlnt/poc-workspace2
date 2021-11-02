@@ -1,9 +1,8 @@
 name: Demo-DBB_Build_on_ZOS_With_GitHub_Actions 
-# PreReq:
+# Notes:
 #  Runner install: https://docs.github.com/en/actions/hosting-your-own-runners/adding-self-hosted-runners
-#  Runner needs:   Git, pre-gen'd SSH keys to zOS, network access to zOS, 
-#  known_host:     Run an SSH test cmd from the runner 
-#  zOS needs:      DBB and Git installed with security and network access to clone the repo 
+#  Runner PreReq:  Git, pre-gen'd SSH keys to zOS, network access to zOS,and known_host updated for GH
+#  zOS PreReq:     Installed DBB and Git. SSH security and network access to clone the repo 
 #  CI pipeline:    Use the simple workflow option to design a new actions yaml file like below
 # /* 
 
@@ -18,7 +17,7 @@ env:
     Publish:    'All-pipeline-scripts/AzPublishUCD.sh'
     
 
-# the on trigger is for manually starting the workflow from the runer (agent)
+# the on trigger is for manually starting the workflow from the runner (agent)
 # add repo events like pull, push...  
 on: workflow_dispatch
 
