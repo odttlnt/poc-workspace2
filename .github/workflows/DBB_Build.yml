@@ -8,4 +8,4 @@ jobs:
     env:
       DBB_Host:  'nlopez@tvt6031.svl.ibm.com'    
     steps:
-      - run: ssh env.$DBB_Host  ls 
+      - run: ssh env.DBB_Host  ls 
