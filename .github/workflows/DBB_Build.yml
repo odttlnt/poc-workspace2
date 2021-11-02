@@ -1,13 +1,21 @@
 name: Demo-DBB_Build_on_ZOS_With_GitHub_Actions 
+# PreReq:
+#  Runner install: https://docs.github.com/en/actions/hosting-your-own-runners/adding-self-hosted-runners
+#  Runner needs:   Git, pre-gen'd SSH keys to zOS, network access to zOS, 
+#  known_host:     Run an SSH test cmd from the runner 
+#  zOS needs:      DBB and Git installed with security and network access to clone the repo 
+#  CI pipeline:    Use the simple workflow option to design a new actions yaml file like below
+#/* 
 
 # the on trigger is for manually starting the workflow from the runer (agent)
+# add repo events like pull, push...
 on:   workflow_dispatch
 
 jobs:
-    Build_on_zOS:
-        runs-on: self-hosted  
-        env:
-            DBB_Host:  'nlopez@tvt6031.svl.ibm.com'    
-      
+    env:
+        DBB_Host:  'nlopez@tvt6031.svl.ibm.com'    
+
+    Build_on_zOS:    
+        runs-on: self-hosted        
         steps:
             - run: ssh ${{ env.DBB_Host }}  ls 
