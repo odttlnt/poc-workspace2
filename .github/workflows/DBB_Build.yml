@@ -16,6 +16,9 @@ env:
     DBB_Build:  'All-pipeline-scripts/AzDBB-build.sh'
     Publish:    'All-pipeline-scripts/AzPublishUCD.sh'
     
+    MyRepo:      git@github.com:${{ github.repository }}.git
+    MyBranch:    ${{ github.ref }}
+    MyWorkSpace: tmp/GitHub_Actions 
 
 # the on trigger is for manually starting the workflow from the runner (agent)
 # add repo events like pull, push...  
@@ -25,5 +28,5 @@ jobs:
     Build_on_zOS:    
         runs-on: self-hosted        
         steps:
-            - run: ${{ env.DBB_Host  }} ${{ env.Clone }} git@github.com:${{ github.repository }}.git MyWorkSpace Branch 
+            - run: ${{ env.DBB_Host  }} ${{ env.Clone }}   ${{ env.MyWorkSpace }}  ${{ env.MyBranch }} 
              
