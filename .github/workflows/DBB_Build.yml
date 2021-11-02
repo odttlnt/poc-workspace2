@@ -6,4 +6,4 @@ jobs:
   Build_to_USS:
     runs-on: self-hosted 
     steps:      
-      - run: env
+      - run: sh env
