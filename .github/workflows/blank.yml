@@ -2,7 +2,7 @@ name: learn-github-actions
 on: [push]
 jobs:
   check-bats-version:
-    runs-on: self-hosted, tvt6031
+    runs-on: self-hosted, tvt6031-runner
     steps:
       - uses: actions/checkout@v2
       - run: ls
