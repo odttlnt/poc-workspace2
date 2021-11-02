@@ -19,7 +19,7 @@ env:
     
     MyRepo:      git@github.com:${{ github.repository }}.git
     MyWorkDir:   tmp/ghActions/ghAction-poc-workspace_run_${{ github.run_number }}
-    MyWorkSpace: ghAction-poc_workspace    
+    MyWorkSpace: ghAction-poc-workspace    
     MyBranch:    ${{ github.ref }}
         
     
