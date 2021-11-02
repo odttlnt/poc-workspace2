@@ -10,5 +10,4 @@ Build_on_zOS:
       DBB_Host:  'nlopez@tvt6031.svl.ibm.com'    
       
     steps:
-      - name: "build "
       - run: "ssh $DBB_Host  ls "
