@@ -25,5 +25,5 @@ jobs:
     Build_on_zOS:    
         runs-on: self-hosted        
         steps:
-            - run: ${{ env.DBB_Host  }} ${{ env.Clone }} $GITHUB_REPOSITORY MyWorkSpace Branch 
+            - run: ${{ env.DBB_Host  }} ${{ env.Clone }} ${{ GITHUB_REPOSITORY }} MyWorkSpace Branch 
              
