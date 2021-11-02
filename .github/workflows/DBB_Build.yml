@@ -18,7 +18,7 @@ env:
     
     
     MyRepo:      git@github.com:${{ github.repository }}.git
-    MyWorkDir:   tmp/ghActions/ghAction_poc_workspace/run_${{ github.run_number }}
+    MyWorkDir:   tmp/ghActions/ghAction_poc_workspace_run_${{ github.run_number }}
     MyWorkSpace: ghAction_poc_workspace    
     MyBranch:    ${{ github.ref }}
         
@@ -33,6 +33,7 @@ jobs:
         runs-on: self-hosted
                     
         steps:
-            - run: gci env:* | sort-object name
+#            - run: gci env:* | sort-object name
             - run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }} 
+            - run: ${{ env.DBB_Host  }} ${{ env.DBB_Build }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ghAction-poc-app --impactBuild
              
