@@ -17,7 +17,7 @@ env:
     Publish:    'All-pipeline-scripts/AzPublishUCD.sh'
     
     MyRepo:      git@github.com:${{ github.repository }}.git
-    MyBranch:    ${{ github.head.ref }}
+    MyBranch:    ${{ github.ref }}
     MyWorkSpace: ghAction_poc-workspace
     MyWorkDir:   tmp/ghActions/ghAction_poc-workspace_${{ github.job }}
 
