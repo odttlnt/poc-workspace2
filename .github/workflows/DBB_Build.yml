@@ -2,10 +2,10 @@ name: Demo-DBB_Build_on_ZOS_With_GitHub_Actions
 
 # the on trigger is for manually starting the workflow from the runer (agent)
 on: workflow_dispatch
-jobs:
+jobs:    
   Build_to_USS:
     runs-on: self-hosted  
     env:
-      DBB_Host:  'nlopez@tvt6031.svl.ibm.com'
+      DBB_Host:  'nlopez@tvt6031.svl.ibm.com'    
     steps:
-      - run: ssh $DBB_Host  ls 
+      - run: ssh env.$DBB_Host  ls 
