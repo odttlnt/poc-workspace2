@@ -4,6 +4,6 @@ name: Demo-DBB_Build_on_ZOS_With_GitHub_Actions
 on: workflow_dispatch
 jobs:
   Build_to_USS:
-    runs-on: self-hosted, tvt6031-runner  
+    runs-on: self-hosted  
     steps:
       - run: set
