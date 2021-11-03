@@ -32,31 +32,19 @@ env:
 on: workflow_dispatch
 
 jobs:    
-    Clone_on_zOS:    
+    Build_on_zOS:    
         runs-on: self-hosted
-        steps:
-            - name: Dump GitHub context            
-                env:
-                    GITHUB_CONTEXT: ${{ toJSON(github) }}
-                run: echo "$GITHUB_CONTEXT"
-                
-            - name: Dump job context
-                env:
-                    JOB_CONTEXT: ${{ toJSON(job) }}
-                run: echo "$JOB_CONTEXT"
-                
-                      
+        steps:       
             - name: Clone  
                 - run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
              
-    DBB_Build:    
-        runs-on: self-hosted
-        steps:        
-            - run: ${{ env.DBB_Host  }} ${{ env.DBB_Build }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ghAction-poc-app --impactBuild
+            - name: DBB_Impact_Build:    
+                - run: ${{ env.DBB_Host  }} ${{ env.DBB_Build }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ghAction-poc-app --impactBuild
              
     Test_on_zOS:    
         runs-on: self-hosted
         steps:
-            - run: ${{ env.DBB_Host  }} tsocmd submit "'dat.dev.jcl(datdemo2)'" && sleep 10      
+            - name: UnitTest 
+                - run: ${{ env.DBB_Host  }} tsocmd submit "'dat.dev.jcl(datdemo2)'" && sleep 10      
              
              
