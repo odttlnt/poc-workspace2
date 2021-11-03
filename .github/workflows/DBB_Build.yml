@@ -39,7 +39,7 @@ jobs:
             MyBranch:    ${{ github.ref }}
                              
         steps:
-            - run  echo "Clone $GITHUB_REF"
+            - run: echo "Clone $GITHUB_REF"
             - run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
              
     DBB_Build:    
