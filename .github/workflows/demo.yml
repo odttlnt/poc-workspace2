@@ -3,7 +3,7 @@ name: Demo-DBB_Build_on_ZOS
 #  A sample zOS DBB workflow  
 
 # Global vars
-env:
+env <<-- bad line 
     # a var with a valid SSH acct on Z. With pre-gen'd and tested keys in the runner. 
     DBB_Host:  'ssh nlopez@tvt6031.svl.ibm.com'
     
