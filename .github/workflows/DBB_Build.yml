@@ -18,8 +18,6 @@ env:
     DBB_Build:  'All-pipeline-scripts/AzDBB-build.sh'
     Publish:    'All-pipeline-scripts/AzPublishUCD.sh'
     
-   
-   
         
     
 # "on" trigger to  manually start this workflow. Can add "pull, push..." for auto trigger.   
@@ -50,6 +48,7 @@ jobs:
              
     Test_on_zOS:    
         runs-on: self-hosted
+        needs: DBB_Build_on_zOS
         steps:
             - name: Run_DATDEMO-pgm               
               run: |
