@@ -1,6 +1,6 @@
 name: Demo-DBB_Build_on_ZOS
-## Notes:
-#  A sample zOS DBB workflow 
+## Notes: 
+#  A sample zOS DBB workflow  
 
 # Global vars
 env:
