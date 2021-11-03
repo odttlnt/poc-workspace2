@@ -1,0 +1,34 @@
+name: Demo-DBB_Build_on_ZOS_With_GitHub_Actions 
+## Notes:
+#  A sample zOS DBB workflow 
+
+# Global vars
+env:
+    # a var with a valid SSH acct on Z. With pre-gen'd and tested keys in the runner. 
+    DBB_Host:  'ssh yourAcct@your_zOS_Host 
+    
+    # scripts on z/OS (SSH user's Home Dir in Unix - USS).  See SSH scripting Doc 
+    Clone:      'All-pipeline-scripts/AzRocketGit-init.sh'
+    DBB_Build:  'All-pipeline-scripts/AzDBB-build.sh'
+    Publish:    'All-pipeline-scripts/AzPublishUCD.sh'
+    
+# "on" trigger to  manually start this workflow. Can add "pull, push..." for auto trigger.   
+# see https://docs.github.com/en/actions/learn-github-actions/contexts
+on: workflow_dispatch
+
+jobs:    
+    DBB_Build_on_zOS:        
+        runs-on: self-hosted
+        env:
+            # Project related vars 
+            MyRepo:      git@github.com:${{ github.repository }}.git
+            MyWorkDir:   tmp/ghActions/ghAction-poc-workspace_run_${{ github.run_number }}
+            MyWorkSpace: ghAction-poc-workspace    
+            MyBranch:    ${{ github.ref }}
+                                 
+        steps:
+            - name: Clone  
+              run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
+             
+            - name: DBB_Impact_Build
+              run: ${{ env.DBB_Host  }} ${{ env.DBB_Build }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ghAction-poc-app --impactBuild 
