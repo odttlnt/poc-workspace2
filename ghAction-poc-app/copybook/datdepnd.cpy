@@ -1,1 +1,1 @@
-       01 WS-VER    PIC X(24) VALUE 'Ver via Actions v4'.
+       01 WS-VER    PIC X(24) VALUE ' Ver GitHub Action Demo v1'.
