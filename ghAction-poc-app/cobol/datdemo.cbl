@@ -33,6 +33,7 @@
                     perform dump_num1
                 END-IF
            END-PERFORM.
+           STOP RUN.
       *====================
       *==================== add new features down here
       *====================
