@@ -7,15 +7,18 @@
 //         DD DSN=EQAE20.SEQAMOD,DISP=SHR
 //         DD DSN=FELE20.SFEKAUTH,DISP=SHR
 //SYSOUT   DD SYSOUT=*
-//* for cob 3-4 needs this
-//*AQEV4LST DD DSN=DNET323.TEST.LISTING,DISP=SHR
-//CEEDUMP  DD SYSOUT=*
 //*
+//*
+//*
+//*
+//*
+//* Debug sample jcl
+//CEEDUMP  DD SYSOUT=*
 //* zapp needs alloc the same file during the compile
 //* dd below is needed when compileing with TEST(SOURECE,SEP) only
 //*EQADEBUG DD DSN=NLOPEZ.SYSDEBUG,DISP=SHR  Sep file
-//CEEOPTS  DD *
-TEST(,,,DBMDT%NLOPEZ:)
+//*CEEOPTS  DD *
+//*TEST(,,,DBMDT%NLOPEZ:)
 /*
 //*
 //* Use TEST to start the IDz debbugger Prespective
