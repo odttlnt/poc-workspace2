@@ -33,10 +33,7 @@
                     perform dump_num1
                 END-IF
            END-PERFORM.
-      *========== static call
-           CALL 'DATSUB'.
-           STOP RUN.
-      *====================
+            *====================
       *==================== add new features down here
       *====================
        dump_num1.
