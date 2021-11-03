@@ -51,8 +51,7 @@ jobs:
     Test_on_zOS:    
         runs-on: self-hosted
         steps:
-            - name: Run_DATDEMO-pgm
-              env: TestJob="MyBranch:    ${{ github.ref }} 
+            - name: Run_DATDEMO-pgm               
               run: |
                    $Env:jcl="'DAT.DEV.JCL(DATDEMO3)'"
                    ${{ env.DBB_Host  }} tsocmd delete  "\'dat.dev.test.result\'"   
