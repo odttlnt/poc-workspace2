@@ -51,10 +51,12 @@ jobs:
     Test_on_zOS:    
         runs-on: self-hosted
         steps:
-            - name: Run_DATDEMO-pgm 
+            - name: Run_DATDEMO-pgm
+              env: TestJob="MyBranch:    ${{ github.ref }} 
               run: |
-                   ${{ env.DBB_Host  }} tsocmd submit "'dat.dev.jcl(datdemo3)'" 
+                   $Env:jcl="'DAT.DEV.JCL(DATDEMO3)'"
+                   ${{ env.DBB_Host  }} tsocmd delete  "\'dat.dev.test.result\'"   
+                   ${{ env.DBB_Host  }} tsocmd submit "\'$env:jcl\'"  
                    sleep 10    
-                   ${{ env.DBB_Host  }} cat "//'dat.dev.test.result'"   
-             
+                   ${{ env.DBB_Host  }} cat  "//\'dat.dev.test.result\'"
              
