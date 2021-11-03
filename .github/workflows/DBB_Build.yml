@@ -12,7 +12,7 @@ name: Demo-DBB_Build_on_ZOS_With_GitHub_Actions
 env:
     # a var with a valid SSH acct on Z. With pre-gen'd and tested keys in the runner. 
     # my real zOS harware 
-    DBB_Host:  'ssh nlopez@tvt6031.svl.ibm.com'
+    #DBB_Host:  'ssh nlopez@tvt6031.svl.ibm.com'
     
     # My OpenShift Virt zOS instance  (wazi sandbox)    
     DBB_Host:  'ssh nlopez@192.168.248.99'
