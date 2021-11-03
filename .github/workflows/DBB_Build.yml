@@ -18,7 +18,7 @@ env:
     DBB_Build:  'All-pipeline-scripts/AzDBB-build.sh'
     Publish:    'All-pipeline-scripts/AzPublishUCD.sh'
     
-   #?? Job Level vars used to define the project settings           
+   # ?? Job Level vars used to define the project settings           
      MyRepo:      git@github.com:${{ github.repository }}.git
      MyWorkDir:   tmp/ghActions/ghAction-poc-workspace_run_${{ github.run_number }}
      MyWorkSpace: ghAction-poc-workspace    
