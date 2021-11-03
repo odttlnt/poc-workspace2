@@ -26,15 +26,18 @@ env:
 on: workflow_dispatch
 
 jobs:     
-    # Job Level vars used to define the project settings           
-    env:
-        MyRepo:      git@github.com:${{ github.repository }}.git
-        MyWorkDir:   tmp/ghActions/ghAction-poc-workspace_run_${{ github.run_number }}
-        MyWorkSpace: ghAction-poc-workspace    
-        MyBranch:    ${{ github.ref }}
+    
         
     Clone_on_zOS:    
-        runs-on: self-hosted                    
+        runs-on: self-hosted
+           
+        # Job Level vars used to define the project settings           
+        env:
+            MyRepo:      git@github.com:${{ github.repository }}.git
+            MyWorkDir:   tmp/ghActions/ghAction-poc-workspace_run_${{ github.run_number }}
+            MyWorkSpace: ghAction-poc-workspace    
+            MyBranch:    ${{ github.ref }}
+                             
         steps:
             - run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
              
