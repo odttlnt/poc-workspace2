@@ -21,7 +21,7 @@
        PROCEDURE DIVISION.
       * MAIN PGM DISPLAY
       *
-           DISPLAY 'DATDEMO Via 3.6'.
+           DISPLAY 'DATDEMO wazi 3.6'.
       *
       *    PERFORM FEATURE1-NEW.
       *
