@@ -52,8 +52,9 @@ jobs:
         runs-on: self-hosted
         steps:
             - name: Run_DATDEMO-pgm 
-              run: ${{ env.DBB_Host  }} tsocmd submit "'dat.dev.jcl(datdemo3)'" 
-              run: sleep 10    
-              run: ${{ env.DBB_Host  }} cat "//'dat.dev.test.result'"   
+              run: |
+                   ${{ env.DBB_Host  }} tsocmd submit "'dat.dev.jcl(datdemo3)'" 
+                   sleep 10    
+                   ${{ env.DBB_Host  }} cat "//'dat.dev.test.result'"   
              
              
