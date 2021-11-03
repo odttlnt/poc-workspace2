@@ -33,18 +33,14 @@ on: workflow_dispatch
 jobs:    
     Build_on_zOS:    
         runs-on: self-hosted
-        steps:       
-            - name: Clone  
-                - run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
-             
-            - name: DBB_Impact_Build
-                - run: ${{ env.DBB_Host  }} ${{ env.DBB_Build }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ghAction-poc-app --impactBuild
+        steps:
+            - run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
+            - run: ${{ env.DBB_Host  }} ${{ env.DBB_Build }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ghAction-poc-app --impactBuild
              
     Test_on_zOS:    
         needs: Build_on_zOS
         runs-on: self-hosted
         steps:
-            - name: UnitTest 
-                - run: ${{ env.DBB_Host  }} tsocmd submit "'dat.dev.jcl(datdemo2)'" && sleep 10      
+            - run: ${{ env.DBB_Host  }} tsocmd submit "'dat.dev.jcl(datdemo2)'" && sleep 10      
              
              
