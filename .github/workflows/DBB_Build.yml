@@ -18,6 +18,12 @@ env:
     DBB_Build:  'All-pipeline-scripts/AzDBB-build.sh'
     Publish:    'All-pipeline-scripts/AzPublishUCD.sh'
     
+   #?? Job Level vars used to define the project settings           
+     MyRepo:      git@github.com:${{ github.repository }}.git
+     MyWorkDir:   tmp/ghActions/ghAction-poc-workspace_run_${{ github.run_number }}
+     MyWorkSpace: ghAction-poc-workspace    
+     MyBranch:    ${{ github.ref }}
+                                 
    
         
     
@@ -25,19 +31,9 @@ env:
 # see https://docs.github.com/en/actions/learn-github-actions/contexts
 on: workflow_dispatch
 
-jobs:     
-    
-        
+jobs:    
     Clone_on_zOS:    
         runs-on: self-hosted
-           
-        # Job Level vars used to define the project settings           
-        env:
-            MyRepo:      git@github.com:${{ github.repository }}.git
-            MyWorkDir:   tmp/ghActions/ghAction-poc-workspace_run_${{ github.run_number }}
-            MyWorkSpace: ghAction-poc-workspace    
-            MyBranch:    ${{ github.ref }}
-                             
         steps:
             - name: Dump GitHub context            
                 env:
@@ -57,8 +53,8 @@ jobs:
                 run: echo "$RUNNER_CONTEXT"
             
             
-            
-            - run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
+            - name: Clone  
+                - run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
              
     DBB_Build:    
         runs-on: self-hosted
