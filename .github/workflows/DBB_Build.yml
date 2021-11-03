@@ -10,15 +10,15 @@ name: Demo-DBB_Build_on_ZOS_With_GitHub_Actions
 
 # Global vars
 env:
-    # a var with a valid SSH acct on Z. With pre-gen'd and tested keys in the runner. 
+# a var with a valid SSH acct on Z. With pre-gen'd and tested keys in the runner. 
     DBB_Host:  'ssh nlopez@tvt6031.svl.ibm.com'    
     
-    # scripts on z/OS (SSH user's Home Dir in Unix - USS) 
+# scripts on z/OS (SSH user's Home Dir in Unix - USS) 
     Clone:      'All-pipeline-scripts/AzRocketGit-init.sh'
     DBB_Build:  'All-pipeline-scripts/AzDBB-build.sh'
     Publish:    'All-pipeline-scripts/AzPublishUCD.sh'
     
-   # Job Level vars used to define the project settings           
+# Job Level vars used to define the project settings           
      MyRepo:      git@github.com:${{ github.repository }}.git
      MyWorkDir:   tmp/ghActions/ghAction-poc-workspace_run_${{ github.run_number }}
      MyWorkSpace: ghAction-poc-workspace    
