@@ -36,18 +36,12 @@ jobs:
         runs-on: self-hosted
         steps:
             - name: Dump GitHub context            
-                env:
-                    GITHUB_CONTEXT: ${{ toJSON(github) }}
-                - run: echo "$GITHUB_CONTEXT"
-                
-            - name: Dump job context
-                env:
-                    JOB_CONTEXT: ${{ toJSON(job) }}
-                - run: echo "$JOB_CONTEXT"
-                
+              env:
+                GITHUB_CONTEXT: ${{ toJSON(github) }}
+              run: echo "$GITHUB_CONTEXT"
                       
             - name: Clone  
-                - run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
+              run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
              
     DBB_Build:    
         runs-on: self-hosted
