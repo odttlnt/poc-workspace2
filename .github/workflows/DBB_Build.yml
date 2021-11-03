@@ -18,11 +18,7 @@ env:
     DBB_Build:  'All-pipeline-scripts/AzDBB-build.sh'
     Publish:    'All-pipeline-scripts/AzPublishUCD.sh'
     
-    # My GitHub Project info         
-    MyRepo:      git@github.com:${{ github.repository }}.git
-    MyWorkDir:   tmp/ghActions/ghAction-poc-workspace_run_${{ github.run_number }}
-    MyWorkSpace: ghAction-poc-workspace    
-    MyBranch:    ${{ github.ref }}
+   
         
     
 # "on" trigger to  manually start this workflow. Can add "pull, push..." for auto trigger.   
@@ -30,6 +26,13 @@ env:
 on: workflow_dispatch
 
 jobs:     
+    # Job Level vars used to define the project settings           
+    env:
+        MyRepo:      git@github.com:${{ github.repository }}.git
+        MyWorkDir:   tmp/ghActions/ghAction-poc-workspace_run_${{ github.run_number }}
+        MyWorkSpace: ghAction-poc-workspace    
+        MyBranch:    ${{ github.ref }}
+        
     Clone_on_zOS:    
         runs-on: self-hosted                    
         steps:
