@@ -1,10 +1,12 @@
 name: Demo-DBB_Build_on_ZOS_With_GitHub_Actions 
-# Notes:
+## Notes:
 #  Runner install: https://docs.github.com/en/actions/hosting-your-own-runners/adding-self-hosted-runners
 #  Runner PreReq:  Git, pre-gen'd SSH keys to zOS, network access to zOS,and known_host updated for GH
 #  zOS PreReq:     Installed DBB and Git. SSH security and network access to clone the repo 
 #  CI pipeline:    Use the simple workflow option to design a new actions yaml file like below
-# /* 
+#  DBB Run Mode:   "-impactBuild" (normal mode), "-reset" (clears DBB Meta), "-scanOnly -fullBuild" (baseline)
+#  Runner Vars:    add this step to a job to see the env vars "- run: gci env:* | sort-object name"
+## 
 
 # Global vars
 env:
@@ -16,25 +18,31 @@ env:
     DBB_Build:  'All-pipeline-scripts/AzDBB-build.sh'
     Publish:    'All-pipeline-scripts/AzPublishUCD.sh'
     
-    
+    # My GitHub Project info         
     MyRepo:      git@github.com:${{ github.repository }}.git
     MyWorkDir:   tmp/ghActions/ghAction-poc-workspace_run_${{ github.run_number }}
     MyWorkSpace: ghAction-poc-workspace    
     MyBranch:    ${{ github.ref }}
         
     
-# the on trigger is for manually starting the workflow from the runner (agent)
-# add repo events like pull, push...  
+# "on" trigger to  manually start this workflow. Can add "pull, push..." for auto trigger.   
 # see https://docs.github.com/en/actions/learn-github-actions/contexts
 on: workflow_dispatch
 
 jobs:     
-    Build_on_zOS:    
-        runs-on: self-hosted
-                    
+    Clone_on_zOS:    
+        runs-on: self-hosted                    
         steps:
-#            - run: gci env:* | sort-object name
             - run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
-            - run: ${{ env.DBB_Host  }} ${{ env.DBB_Build }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ghAction-poc-app -reset 
+             
+    DBB_Build:    
+        runs-on: self-hosted
+        steps:        
             - run: ${{ env.DBB_Host  }} ${{ env.DBB_Build }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ghAction-poc-app --impactBuild
+             
+    Test_on_zOS:    
+        runs-on: self-hosted
+        steps:
+            - run: ${{ env.DBB_Host  }} tsocmd submit "'dat.dev.jcl(datdemo2)'" && sleep 10      
+             
              
