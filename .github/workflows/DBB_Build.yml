@@ -18,27 +18,43 @@ env:
     DBB_Build:  'All-pipeline-scripts/AzDBB-build.sh'
     Publish:    'All-pipeline-scripts/AzPublishUCD.sh'
     
-   # ?? Job Level vars used to define the project settings           
+   # Job Level vars used to define the project settings           
      MyRepo:      git@github.com:${{ github.repository }}.git
      MyWorkDir:   tmp/ghActions/ghAction-poc-workspace_run_${{ github.run_number }}
      MyWorkSpace: ghAction-poc-workspace    
      MyBranch:    ${{ github.ref }}
                                  
-          
+   
+        
     
 # "on" trigger to  manually start this workflow. Can add "pull, push..." for auto trigger.   
 # see https://docs.github.com/en/actions/learn-github-actions/contexts
 on: workflow_dispatch
 
 jobs:    
-    Build_on_zOS:    
+    Clone_on_zOS:    
         runs-on: self-hosted
         steps:
-            - run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
+            - name: Dump GitHub context            
+                env:
+                    GITHUB_CONTEXT: ${{ toJSON(github) }}
+                run: echo "$GITHUB_CONTEXT"
+                
+            - name: Dump job context
+                env:
+                    JOB_CONTEXT: ${{ toJSON(job) }}
+                run: echo "$JOB_CONTEXT"
+                
+                      
+            - name: Clone  
+                - run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
+             
+    DBB_Build:    
+        runs-on: self-hosted
+        steps:        
             - run: ${{ env.DBB_Host  }} ${{ env.DBB_Build }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ghAction-poc-app --impactBuild
              
     Test_on_zOS:    
-        needs: Build_on_zOS
         runs-on: self-hosted
         steps:
             - run: ${{ env.DBB_Host  }} tsocmd submit "'dat.dev.jcl(datdemo2)'" && sleep 10      
