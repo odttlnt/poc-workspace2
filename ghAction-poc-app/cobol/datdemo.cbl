@@ -21,7 +21,7 @@
        PROCEDURE DIVISION.
       * MAIN PGM DISPLAY
       *
-           DISPLAY 'DATDEMO here- v1.4'.
+           DISPLAY 'DATDEMO here- v2.4'.
       *
       *    PERFORM FEATURE1-NEW.
       *
