@@ -24,8 +24,7 @@ env:
      MyWorkSpace: ghAction-poc-workspace    
      MyBranch:    ${{ github.ref }}
                                  
-   
-        
+          
     
 # "on" trigger to  manually start this workflow. Can add "pull, push..." for auto trigger.   
 # see https://docs.github.com/en/actions/learn-github-actions/contexts
@@ -38,10 +37,11 @@ jobs:
             - name: Clone  
                 - run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
              
-            - name: DBB_Impact_Build:    
+            - name: DBB_Impact_Build
                 - run: ${{ env.DBB_Host  }} ${{ env.DBB_Build }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ghAction-poc-app --impactBuild
              
     Test_on_zOS:    
+        needs: Build_on_zOS
         runs-on: self-hosted
         steps:
             - name: UnitTest 
