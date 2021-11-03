@@ -35,10 +35,10 @@ jobs:
             MyBranch:    ${{ github.ref }}
                                  
         steps:
-            - name: Diags             
-              env:
-                GITHUB_CONTEXT: ${{ toJSON(github) }}
-              run: echo "$GITHUB_CONTEXT"
+            #- name: Diags             
+            #  env:
+            #    GITHUB_CONTEXT: ${{ toJSON(github) }}
+            #  run: echo "$GITHUB_CONTEXT"
                       
             - name: Clone  
               run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
