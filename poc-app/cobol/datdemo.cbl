@@ -15,6 +15,7 @@
           05  num2         PIC 9(3) value is 005.
       *
        COPY DATDEPND.
+       COPY DATSHARE.
       *
       *=============
       *
