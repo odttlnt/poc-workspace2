@@ -1,9 +1,9 @@
        ID DIVISION.
        PROGRAM-ID. DATDEMO.
       *
-      * Simple demo code (NLopez)
-      * Use GITHUB project's DEVELOP branch
-      * v1.0
+      * Simple demo code (NLopez) on local zDT
+      * Use Pub GITHUB project's DEVELOP branch
+      *
        ENVIRONMENT DIVISION.
        DATA DIVISION.
       * start of working storage
@@ -22,7 +22,7 @@
        PROCEDURE DIVISION.
       * MAIN PGM DISPLAY
       *
-           DISPLAY 'DATDEMO here- v1.4'.
+           DISPLAY 'DATDEMO here- v1.6'.
       *
       *    PERFORM FEATURE1-NEW.
       *
