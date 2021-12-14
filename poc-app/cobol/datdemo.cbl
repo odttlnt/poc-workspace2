@@ -1,7 +1,7 @@
        ID DIVISION.
        PROGRAM-ID. DATDEMO.
       *
-      * Simple demo code (NLopez) on local zDT
+      * Simple demo code (NLopez) on local zDT v2
       * Use Pub GITHUB project's DEVELOP branch
       *
        ENVIRONMENT DIVISION.
