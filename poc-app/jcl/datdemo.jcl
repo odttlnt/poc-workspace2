@@ -1,5 +1,5 @@
 //NLOPEZ1Z JOB CLASS=A,MSGCLASS=H,NOTIFY=NLOPEZ
-//* Sample jcl to run batch DATDEMO pgm v1
+//* Sample jcl to run batch DATDEMO pgm v2 zDt
 //S EXEC PGM=DATDEMO
 //*STEPLIB  DD  DISP=SHR,DSN=DAT.DEV.LOAD     UCD Loadlib
 //STEPLIB  DD  DISP=SHR,DSN=NLOPEZ.ZDT.LOAD   IDz Loadlib
@@ -7,10 +7,6 @@
 //         DD DSN=EQAE20.SEQAMOD,DISP=SHR
 //         DD DSN=FELE20.SFEKAUTH,DISP=SHR
 //SYSOUT   DD SYSOUT=*
-//*
-//*
-//*
-//*
 //*
 //* Debug sample jcl
 //CEEDUMP  DD SYSOUT=*
