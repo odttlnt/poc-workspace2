@@ -1,5 +1,5 @@
 //NLOPEZ1Z JOB CLASS=A,MSGCLASS=H,NOTIFY=NLOPEZ
-//* Sample jcl to run batch DATDEMO pgm v22.a zDt
+//* Sample jcl to run batch DATDEMO pgm v22.b zDt
 //S EXEC PGM=DATDEMO
 //*STEPLIB  DD  DISP=SHR,DSN=DAT.DEV.LOAD     UCD Loadlib
 //STEPLIB  DD  DISP=SHR,DSN=NLOPEZ.ZDT.LOAD   IDz Loadlib
