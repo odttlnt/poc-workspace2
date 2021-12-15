@@ -13,7 +13,7 @@ DO       WTO   'DEBUG: NELSON TEST RCode11',ROUTCDE=(11)
          RETURN (14,12),,RC=(15)
 **********************************************************************
 SAVEAREA DS    18F
-         TESTCOPY
+*        TESTCOPY
          COPY   TESTCP2
          SPACE 2
          END

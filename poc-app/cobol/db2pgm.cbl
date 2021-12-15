@@ -5,7 +5,7 @@
       * DB2OREL: DEALLOCATE
       * DB2OVAL: BIND
       * ENDOPT:
-      * must run in wazi06 db2/debug  lives there
+      * Shut down for now
       * test case- how to resolve dclgen with same name as
       * cpybk? conclusion - not supported.  see my tips doc
        ID DIVISION.
@@ -14,16 +14,17 @@
        DATA DIVISION.
        WORKING-STORAGE SECTION.
       * a dclge name just like a cpy
-           EXEC SQL
-                INCLUDE PRODUCTS
-           END-EXEC.
+      *     EXEC SQL
+      *          INCLUDE PRODUCTS
+      *     END-EXEC.
       * a test of a reg cpy
-           COPY PRODUCTS.
+      *     COPY PRODUCTS.
        01 TESTM2                                PIC X.
        01 TESTM                                 PIC X(32).
            EXEC SQL
                 INCLUDE SQLCA
             END-EXEC.
+
       *     EXEC SQL
       *          INCLUDE MYTEST
       *     END-EXEC.
