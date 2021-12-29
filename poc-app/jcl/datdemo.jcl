@@ -1,6 +1,6 @@
 //NLOPEZ1Z JOB CLASS=A,MSGCLASS=H,NOTIFY=NLOPEZ
 //* Sample jcl to run batch DATDEMO pgm v22.f zDt
-//* Impact with transfer script
+//* Impact with transfer script     v1
 //S EXEC PGM=DATDEMO
 //*STEPLIB  DD  DISP=SHR,DSN=DAT.DEV.LOAD     UCD Loadlib
 //STEPLIB  DD  DISP=SHR,DSN=NLOPEZ.IDZ.LOAD   IDz Loadlib
