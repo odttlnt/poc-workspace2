@@ -27,7 +27,8 @@
       *    PERFORM FEATURE1-NEW.
       *
       *========= include copy book
-           DISPLAY 'CPYBK=DATDEPND' WS-VER.
+           DISPLAY 'CPYBK=DATDEPND -> ' WS-VER.
+           DISPLAY 'CPYBK=DATSHARE -> ' shared-f1.
       * do some looping
            PERFORM VARYING num1 FROM 0 BY 1 UNTIL num1 > num2
                 IF num1 > 1  THEN
