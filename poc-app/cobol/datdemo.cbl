@@ -3,7 +3,7 @@
       *
       * Simple demo code (NLopez) on local zDT v2.e
       * Use Pub GITHUB project's DEVELOP branch
-      *
+      * References COMMON Copybook  DATSHARE
        ENVIRONMENT DIVISION.
        DATA DIVISION.
       * start of working storage
@@ -28,6 +28,7 @@
       *
       *========= include copy book
            DISPLAY 'CPYBK=DATDEPND -> ' WS-VER.
+           DISPLAY 'CPYBK=DATEMBED -> ' EMBED-VER.
            DISPLAY 'CPYBK=DATSHARE -> ' shared-f1.
       * do some looping
            PERFORM VARYING num1 FROM 0 BY 1 UNTIL num1 > num2
