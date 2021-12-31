@@ -9,7 +9,7 @@
            EXEC SQL
               SELECT DEPTNAME INTO :DEPTNAME
                FROM  Q.org
-               WHERE DEPTNUMB = 10
+               WHERE DEPTNUMB = 15
            END-EXEC.
            DISPLAY 'Selected  Dept 10 from Org value=' DEPTNAME-TEXT.
            STOP RUN.
