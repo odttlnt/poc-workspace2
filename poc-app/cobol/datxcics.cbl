@@ -11,9 +11,12 @@
       * My test map
            COPY DATMAP.
        PROCEDURE DIVISION.
-            DISPLAY 'Sending a test map'.
-            EXEC CICS
+           DISPLAY 'Sending a test map'.
+           EXEC CICS
                 SEND MAP ('DATMAP')
                      MAPSET('DATMLIS')
                      FROM(DATMLISO)
-            END-EXEC.
+           END-EXEC.
+      *
+           CALL 'DATSUB'.
+           STOP RUN.
