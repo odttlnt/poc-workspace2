@@ -10,4 +10,4 @@
        01 MYDATA2             PIC X(1).
        PROCEDURE DIVISION.
            MOVE MYDATA TO MYDATA2.
-           DISPLAY 'DATSUB HERE In DUAL mode v48    '.
+           DISPLAY 'DATSUB HERE In DUAL mode v49    '.
