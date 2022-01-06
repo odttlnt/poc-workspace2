@@ -1,2 +1,2 @@
-       01 WS-VER    PIC X(24) VALUE 'Ver ST v3.2f'
+       01 WS-VER    PIC X(24) VALUE 'Ver ST v3.2g
        COPY DATEMBED.
