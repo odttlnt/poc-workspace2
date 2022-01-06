@@ -7,12 +7,15 @@ name: Demo-DBB_Build_on_ZOS_With_GitHub_Actions
 #  DBB Run Mode:   "-impactBuild" (normal mode), "-reset" (clears DBB Meta), "-scanOnly -fullBuild" (baseline)
 #  Runner Vars:    add this step to a job to see the env vars "- run: gci env:* | sort-object name"
 ## 
+#  chglog: 
+#   - njl Jan 2022:  added zDT support 
 
 # Global vars
 env:
     # a var with a valid SSH acct on Z. With pre-gen'd and tested keys in the runner. 
     # my real zOS harware 
-    DBB_Host:  'ssh nlopez@tvt6031.svl.ibm.com'
+    #DBB_Host:  'ssh nlopez@tvt6031.svl.ibm.com'
+    DBB_Host:  'ssh nlopez@zos.dev'
     
     # scripts on z/OS (SSH user's Home Dir in Unix - USS) 
     Clone:      'All-pipeline-scripts/AzRocketGit-init.sh'
@@ -31,6 +34,7 @@ jobs:
         env:
             # Project related vars 
             MyRepo:      git@github.com:${{ github.repository }}.git
+            MyCommon:      git@github.com:${{ github.repository }}.git
             MyWorkDir:   tmp/ghActions/ghAction-poc-workspace_run_${{ github.run_number }}
             MyWorkSpace: ghAction-poc-workspace    
             MyBranch:    ${{ github.ref }}
@@ -41,9 +45,12 @@ jobs:
             #    GITHUB_CONTEXT: ${{ toJSON(github) }}
             #  run: echo "$GITHUB_CONTEXT"
                       
-            - name: Clone  
+            - name: Clone_Main_Repo  
               run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
              
+            - name: Clone_Common_Repo  
+              run: ${{ env.DBB_Host  }} ${{ env.Clone }}  ${{ env.MyRepo }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ${{ env.MyBranch }}
+
             - name: DBB_Impact_Build
               run: ${{ env.DBB_Host  }} ${{ env.DBB_Build }}   ${{ env.MyWorkDir }}  ${{ env.MyWorkSpace }}  ghAction-poc-app --impactBuild
              
