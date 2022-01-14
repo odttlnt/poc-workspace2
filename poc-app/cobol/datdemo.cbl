@@ -13,7 +13,7 @@
           05  num2         PIC 9(3) value is 005.
       *
        COPY DATDEPND.
-      * COPY DATSHARE.
+       COPY DATSHARE.
       *
        PROCEDURE DIVISION.
            DISPLAY 'DATDEMO here- v1.2209'.
@@ -21,7 +21,7 @@
       *========= display copybook literals
            DISPLAY 'CPYBK=DATDEPND -> ' WS-VER.
       *     DISPLAY 'CPYBK=DATEMBED -> ' EMBED-VER.
-      *     DISPLAY 'CPYBK=DATSHARE -> ' shared-f1.
+           DISPLAY 'CPYBK=DATSHARE -> ' shared-f1.
 
       * do something ...
            PERFORM VARYING num1 FROM 0 BY 1 UNTIL num1 > num2
@@ -30,7 +30,7 @@
                 END-IF
            END-PERFORM.
       *========== static call example
-          CALL 'DATSUB'.
+           CALL 'DATSUB'.
            STOP RUN.
       *==========
        dump_num1.

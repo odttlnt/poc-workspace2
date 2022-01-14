@@ -1,0 +1,207 @@
+PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901                 Date 01/13/2022  Time 14:31:21   Page     1
+
+Invocation parameters:
+ source,cp(37)
+
+Options in effect:
+ NOADATA
+   ADV
+   AFP(NOVOLATILE)
+   QUOTE
+   ARCH(8)
+   ARITH(COMPAT)
+ NOAWO
+ NOBLOCK0
+   BUFSIZE(4096)
+ NOCICS
+   CODEPAGE(37)
+ NOCOMPILE(S)
+ NOCOPYLOC
+ NOCOPYRIGHT
+ NOCURRENCY
+   DATA(31)
+   DBCS
+ NODECK
+ NODEFINE
+ NODIAGTRUNC
+   DISPSIGN(COMPAT)
+ NODLL
+ NODUMP
+ NODYNAM
+ NOEXIT
+ NOEXPORTALL
+ NOFASTSRT
+   FLAG(I,I)
+ NOFLAGSTD
+   HGPR(PRESERVE)
+ NOINITCHECK
+ NOINITIAL
+   INLINE
+   INTDATE(ANSI)
+   LANGUAGE(EN)
+   LINECOUNT(60)
+ NOLIST
+   LP(32)
+ NOMAP
+   MAXPCF(100000)
+ NOMDECK
+ NONAME
+   NSYMBOL(NATIONAL)
+ NONUMBER
+ NONUMCHECK
+   NUMPROC(NOPFD)
+   OBJECT
+ NOOFFSET
+   OPTIMIZE(0)
+   OUTDD(SYSOUT)
+ NOPARMCHECK
+   PGMNAME(COMPAT)
+   QUALIFY(COMPAT)
+   RENTPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901                 Date 01/13/2022  Time 14:31:21   Page     2
+
+   RMODE(AUTO)
+ NORULES
+ NOSERVICE
+   SEQUENCE
+   SOURCE
+   SPACE(1)
+ NOSQL
+   SQLCCSID
+ NOSQLIMS
+ NOSSRANGE
+ NOSTGOPT
+   SUPPRESS
+ NOTERM
+ NOTEST(NODWARF,NOSOURCE,NOSEPARATE)
+ NOTHREAD
+   TRUNC(STD)
+ NOVBREF
+   VLR(STANDARD)
+   VSAMOPENFS(COMPAT)
+ NOWORD
+   XMLPARSE(XMLSS)
+   XREF(FULL)
+   ZONEDATA(PFD)
+   ZWBPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901                 Date 01/13/2022  Time 14:31:21   Page     3
+
+LineID  Message code  Library phase message text
+
+    17  IGYLI0048-S   The member "DATEMBED" was not found in the "COPY" library.  Skipped to the period terminating the "COPY"
+                      statement.
+
+    18  IGYLI0048-S   The member "DATSHARE" was not found in the "COPY" library.  Skipped to the period terminating the "COPY"
+                      statement.
+
+
+Messages    Total    Informational    Warning    Error    Severe    Terminating
+
+Printed:       2                                              2PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DATDEMO   Date 01/13/2022  Time 14:31:21   Page     4
+  LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
+
+  000001                ID DIVISION.
+  000002                PROGRAM-ID. DATDEMO.
+  000003               *
+  000004               * Simple demo code (NLopez) on local zDT v2.e
+  000005               * Use Pub GITHUB project's DEVELOP branch
+  000006               * References COMMON Copybook  DATSHARE
+  000007                ENVIRONMENT DIVISION.
+  000008                DATA DIVISION.
+  000009                WORKING-STORAGE SECTION.
+  000010                01 WK-AREA1.
+  000011                   05  FILLER       PIC X(80).
+  000012                   05  num1         PIC 9(3) value zeros.                                 IMP
+  000013                   05  num2         PIC 9(3) value is 005.
+  000014               *
+  000015                COPY DATDEPND.
+  000016C               01 WS-VER    PIC X(24) VALUE 'Ver ST v3.2k'.
+  000017C               COPY DATEMBED.
+  000018                COPY DATSHARE.
+  000019               *
+  000020                PROCEDURE DIVISION.
+  000021                    DISPLAY 'DATDEMO here- v1.2209'.
+  000022               *
+  000023               *========= display copybook literals
+  000024                    DISPLAY 'CPYBK=DATDEPND -> ' WS-VER.                                  16
+  000025               *     DISPLAY 'CPYBK=DATEMBED -> ' EMBED-VER.
+  000026                    DISPLAY 'CPYBK=DATSHARE -> ' shared-f1.                               UND
+
+==000026==> IGYPS2121-S "SHARED-F1" was not defined as a data-name.  The statement was discarded.
+
+  000027
+  000028               * do something ...
+  000029                    PERFORM VARYING num1 FROM 0 BY 1 UNTIL num1 > num2                    12 12 13
+  000030      1                  IF num1 > 1  THEN                                                12
+  000031      2                      perform dump_num1                                            38
+  000032      1                  END-IF
+  000033                    END-PERFORM.
+  000034               *========== static call example
+  000035                   CALL 'DATSUB'.                                                         *
+
+==000035==> IGYPS0009-E "CALL" should not begin in area "A".  It was processed as if found in
+                        area "B".
+
+  000036                    STOP RUN.
+  000037               *==========
+  000038                dump_num1.
+  000039                    display 'Tracing num1=' num1.                                         12PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DATDEMO   Date 01/13/2022  Time 14:31:21   Page     5
+
+An "M" preceding a data-name reference indicates that the data-name is modified by this reference.
+
+ Defined   Cross-reference of data names   References
+
+      12   NUM1 . . . . . . . . . . . . .  M29 29 30 39
+      13   NUM2 . . . . . . . . . . . . .  29
+      10   WK-AREA1
+      16   WS-VER . . . . . . . . . . . .  24PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DATDEMO   Date 01/13/2022  Time 14:31:21   Page     6
+
+Context usage is indicated by the letter preceding a procedure-name reference.
+These letters and their meanings are:
+    A = ALTER (procedure-name)
+    D = GO TO (procedure-name) DEPENDING ON
+    E = End of range of (PERFORM) through (procedure-name)
+    G = GO TO (procedure-name)
+    P = PERFORM (procedure-name)
+    T = (ALTER) TO PROCEED TO (procedure-name)
+    U = USE FOR DEBUGGING (procedure-name)
+
+ Defined   Cross-reference of procedures   References
+
+      38   DUMP_NUM1. . . . . . . . . . .  P31PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DATDEMO   Date 01/13/2022  Time 14:31:21   Page     7
+
+ Defined   Cross-reference of programs     References
+
+       2   DATDEMOPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DATDEMO   Date 01/13/2022  Time 14:31:21   Page     8
+
+
+         COPY/BASIS cross-reference of text-names, library names and dataset information
+
+ Text-name Library   File name                                    Concat   ISPF statistics
+ (Member)  (DDNAME)  (Dataset name)                               Level    Created         Changed
+
+ DATDEPND  SYSLIB    NLOPEZ.VSCODE.COPY                             0
+PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DATDEMO   Date 01/13/2022  Time 14:31:21   Page     9
+
+LineID  Message code  Message text
+
+        IGYSC0207-S   Severe message(s) were issued during library phase processing.  Refer to the beginning of the listing.
+
+    26  IGYPS2121-S   "SHARED-F1" was not defined as a data-name.  The statement was discarded.
+
+    35  IGYPS0009-E   "CALL" should not begin in area "A".  It was processed as if found in area "B".
+
+
+Messages    Total    Informational    Warning    Error    Severe    Terminating
+
+Printed:       3                                    1         2
+
+
+* Statistics for COBOL program DATDEMO:
+*    Source records = 39
+*    Data Division statements = 4
+*    Procedure Division statements = 9
+*    Generated COBOL statements = 0
+*    Program complexity factor = 10
+
+End of compilation 1,  program DATDEMO,  highest severity 12.
+
+Return code 12
