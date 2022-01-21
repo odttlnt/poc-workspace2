@@ -1,0 +1,501 @@
+PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901                 Date 01/15/2022  Time 16:02:42   Page     1
+
+Invocation parameters:
+ source,cp(37)
+
+Options in effect:
+ NOADATA
+   ADV
+   AFP(NOVOLATILE)
+   QUOTE
+   ARCH(8)
+   ARITH(COMPAT)
+ NOAWO
+ NOBLOCK0
+   BUFSIZE(4096)
+ NOCICS
+   CODEPAGE(37)
+ NOCOMPILE(S)
+ NOCOPYLOC
+ NOCOPYRIGHT
+ NOCURRENCY
+   DATA(31)
+   DBCS
+ NODECK
+ NODEFINE
+ NODIAGTRUNC
+   DISPSIGN(COMPAT)
+ NODLL
+ NODUMP
+ NODYNAM
+ NOEXIT
+ NOEXPORTALL
+ NOFASTSRT
+   FLAG(I,I)
+ NOFLAGSTD
+   HGPR(PRESERVE)
+ NOINITCHECK
+ NOINITIAL
+   INLINE
+   INTDATE(ANSI)
+   LANGUAGE(EN)
+   LINECOUNT(60)
+ NOLIST
+   LP(32)
+ NOMAP
+   MAXPCF(100000)
+ NOMDECK
+ NONAME
+   NSYMBOL(NATIONAL)
+ NONUMBER
+ NONUMCHECK
+   NUMPROC(NOPFD)
+   OBJECT
+ NOOFFSET
+   OPTIMIZE(0)
+   OUTDD(SYSOUT)
+ NOPARMCHECK
+   PGMNAME(COMPAT)
+   QUALIFY(COMPAT)
+   RENTPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901                 Date 01/15/2022  Time 16:02:42   Page     2
+
+   RMODE(AUTO)
+ NORULES
+ NOSERVICE
+   SEQUENCE
+   SOURCE
+   SPACE(1)
+ NOSQL
+   SQLCCSID
+ NOSQLIMS
+ NOSSRANGE
+ NOSTGOPT
+   SUPPRESS
+ NOTERM
+ NOTEST(NODWARF,NOSOURCE,NOSEPARATE)
+ NOTHREAD
+   TRUNC(STD)
+ NOVBREF
+   VLR(STANDARD)
+   VSAMOPENFS(COMPAT)
+ NOWORD
+   XMLPARSE(XMLSS)
+   XREF(FULL)
+   ZONEDATA(PFD)
+   ZWBPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DATDEMO   Date 01/15/2022  Time 16:02:42   Page     3
+  LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
+
+  000001                ID DIVISION.
+  000002                PROGRAM-ID. DATDEMO.
+  000003               *
+  000004               * Simple demo code (NLopez) on local zDT v2.e
+  000005               * Use Pub GITHUB project's DEVELOP branch
+  000006               * References COMMON Copybook  DATSHARE
+  000007                ENVIRONMENT DIVISION.
+  000008                DATA DIVISION.
+  000009                WORKING-STORAGE SECTION.
+  000010                01 WK-AREA1.
+  000011                   05  FILLER       PIC X(80).
+  000012                   05  num1         PIC 9(3) value zeros.                                 IMP
+  000013                   05  num2         PIC 9(3) value is 005.
+  000014               *
+  000015               * COPY DATDEPND.
+  000016               * COPY DATSHARE.
+  000017               *
+  000018                PROCEDURE DIVISION.
+  000019                    DISPLAY 'DATDEMO here- v1.2209'.
+  000020               *
+  000021               *========= display copybook literals
+  000022               *     DISPLAY 'CPYBK=DATDEPND -> ' WS-VER.
+  000023               *     DISPLAY 'CPYBK=DATEMBED -> ' EMBED-VER.
+  000024               *     DISPLAY 'CPYBK=DATSHARE -> ' shared-f1.
+  000025
+  000026               * do something ...
+  000027                    PERFORM VARYING num1 FROM 0 BY 1 UNTIL num1 > num2                    12 12 13
+  000028      1                  IF num1 > 1  THEN                                                12
+  000029      2                      perform dump_num1                                            36
+  000030      1                  END-IF
+  000031                    END-PERFORM.
+  000032               *========== static call example
+  000033                    CALL 'DATSUB'.                                                        EXT
+  000034                    STOP RUN.
+  000035               *==========
+  000036                dump_num1.
+  000037                    display 'Tracing num1=' num1.                                         12PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DATDEMO   Date 01/15/2022  Time 16:02:42   Page     4
+
+An "M" preceding a data-name reference indicates that the data-name is modified by this reference.
+
+ Defined   Cross-reference of data names   References
+
+      12   NUM1 . . . . . . . . . . . . .  M27 27 28 37
+      13   NUM2 . . . . . . . . . . . . .  27
+      10   WK-AREA1PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DATDEMO   Date 01/15/2022  Time 16:02:42   Page     5
+
+Context usage is indicated by the letter preceding a procedure-name reference.
+These letters and their meanings are:
+    A = ALTER (procedure-name)
+    D = GO TO (procedure-name) DEPENDING ON
+    E = End of range of (PERFORM) through (procedure-name)
+    G = GO TO (procedure-name)
+    P = PERFORM (procedure-name)
+    T = (ALTER) TO PROCEED TO (procedure-name)
+    U = USE FOR DEBUGGING (procedure-name)
+
+ Defined   Cross-reference of procedures   References
+
+      36   DUMP_NUM1. . . . . . . . . . .  P29PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DATDEMO   Date 01/15/2022  Time 16:02:42   Page     6
+
+ Defined   Cross-reference of programs     References
+
+       2   DATDEMO
+EXTERNAL   DATSUB . . . . . . . . . . . .  33
+
+
+* Statistics for COBOL program DATDEMO:
+*    Source records = 37
+*    Data Division statements = 3
+*    Procedure Division statements = 7
+*    Generated COBOL statements = 0
+*    Program complexity factor = 7
+
+End of compilation 1,  program DATDEMO,  no statements flagged.
+
+Return code 0
+1z/OS V2 R4 BINDER     16:02:43 SATURDAY JANUARY 15, 2022
+ BATCH EMULATOR  JOB(DBBP7   ) STEP(*OMVSEX ) PGM= IEWBLINK
+ IEW2278I B352 INVOCATION PARAMETERS - XREF
+ IEW2322I 1220  1     INCLUDE SYSLIB(DATDEMO)
+ IEW2322I 1220  2     ENTRY DATDEMO
+ IEW2322I 1220  3    NAME DATDEMO(R)
+
+
+1                                       C R O S S - R E F E R E N C E  T A B L E
+                                        _________________________________________
+
+ TEXT CLASS = C_CODE
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+       24 DATDEMO                        24 A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+       2C DATDEMO                        2C A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+       30 DATDEMO                        30 A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+       34 DATDEMO                        34 A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+       38 DATDEMO                        38 V-CON | IGZXBST4         IGZXBST4                        0 B_TEXT           |
+       3C DATDEMO                        3C A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+       44 DATDEMO                        44 A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+      5B0 DATDEMO                       5B0 Q-CON | DATDEMO#S        $NON-RELOCATABLE               10 C_WSA            |
+      5B4 DATDEMO                       5B4 V-CON | DATSUB           DATSUB                          0 C_CODE           |
+      5B8 DATDEMO                       5B8 V-CON | IGZXPRS          IGZXPRS                         0 B_TEXT           |
+      5BC DATDEMO                       5BC V-CON | IGZXCMSG         IGZXCMSG                        0 B_TEXT           |
+      5C0 DATDEMO                       5C0 A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+      5C4 DATDEMO                       5C4 A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+      5C8 DATDEMO                       5C8 V-CON | IGZXDSP          IGZXDSP                         0 B_TEXT           |
+      5CC DATDEMO                       5CC V-CON | IGZXTREC         IGZXTREC                        0 B_TEXT           |
+      5D0 DATDEMO                       5D0 V-CON | IGZXRT1          IGZXRT1                         0 B_TEXT           |
+      5F0 DATDEMO                       5F0 A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+      5FC DATDEMO                       5FC A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+      620 DATDEMO                       620 A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+      648 DATDEMO                       648 A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+      66C DATDEMO                       66C A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+      6AC DATDEMO                       6AC A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+      8D4 DATDEMO                       8D4 A-CON | CEESTART         CEESTART                        0 B_TEXT           |
+      8D4 DATDEMO                       8D4 A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+      8EC DATDEMO                       8EC A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+      8F0 DATDEMO                       8F0 V-CON | CEESTART         CEESTART                        0 B_TEXT           |
+      8F4 DATDEMO                       8F4 V-CON | CEEBETBL         CEEBETBL                        0 B_TEXT           |
+      93C DATDEMO                       93C Q-CON | DATDEMO#S        $NON-RELOCATABLE               10 C_WSA            |
+      9A4 DATSUB                         24 A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+      9AC DATSUB                         2C A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+      9B0 DATSUB                         30 A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+      9B4 DATSUB                         34 A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+      9B8 DATSUB                         38 V-CON | IGZXBST4         IGZXBST4                        0 B_TEXT           |
+      9BC DATSUB                         3C A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+      9C4 DATSUB                         44 A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+      D80 DATSUB                        400 Q-CON | DATSUB#S         $NON-RELOCATABLE               A0 C_WSA            |
+      D84 DATSUB                        404 V-CON | IGZXPRS          IGZXPRS                         0 B_TEXT           |
+      D88 DATSUB                        408 V-CON | IGZXCMSG         IGZXCMSG                        0 B_TEXT           |
+      D8C DATSUB                        40C A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+      D90 DATSUB                        410 V-CON | IGZXDSP          IGZXDSP                         0 B_TEXT           |
+      D94 DATSUB                        414 V-CON | IGZXRT1          IGZXRT1                         0 B_TEXT           |
+      DB4 DATSUB                        434 A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+      DC0 DATSUB                        440 A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+      DF0 DATSUB                        470 A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+      E14 DATSUB                        494 A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+      E38 DATSUB                        4B8 A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+      FEC DATSUB                        66C A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+
+
+1                                       C R O S S - R E F E R E N C E  T A B L E
+                                        _________________________________________
+
+ TEXT CLASS = C_CODE
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+      FEC DATSUB                        66C A-CON | CEESTART         CEESTART                        0 B_TEXT           |
+     1004 DATSUB                        684 A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+     1008 DATSUB                        688 V-CON | CEESTART         CEESTART                        0 B_TEXT           |
+     100C DATSUB                        68C V-CON | CEEBETBL         CEEBETBL                        0 B_TEXT           |
+     104C DATSUB                        6CC Q-CON | DATSUB#S         $NON-RELOCATABLE               A0 C_WSA            |
+
+
+ TEXT CLASS = C_@@PPA2
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+        4 $PRIV000010                     4 A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+        C $PRIV000012                     C A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+
+
+ TEXT CLASS = C_@@CSINIT
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+        0 $PRIV000011                     0 A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+        4 $PRIV000013                     4 A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+
+
+ TEXT CLASS = B_TEXT
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+       24 CEESG004                       14 A-CON | IGZEOPT          $UNRESOLVED(W)                                     |
+       28 CEESG004                       18 A-CON | IGZETUN          $UNRESOLVED(W)                                     |
+       2C CEESG004                       1C A-CON | IGZXRES1         $UNRESOLVED(W)                                     |
+       30 CEESG004                       20 A-CON | IEWBLIT          IEWBLIT                         0 B_LIT            |
+      510 IGZXBST4                      450 V-CON | CEEINT           CEEBPIRA                        0 B_TEXT           |
+      514 IGZXBST4                      454 V-CON | CEEARLU          CEEARLU                         0 B_TEXT           |
+      518 IGZXBST4                      458 A-CON | CEESG004         CEESG004                        0 B_TEXT           |
+      5A4 CEEBETBL                        4 V-CON | CEEBXITA         $UNRESOLVED(W)                                     |
+      5A8 CEEBETBL                        8 V-CON | CEEBINT          CEEBINT                         0 B_TEXT           |
+      5AC CEEBETBL                        C V-CON | CEEBLLST         CEEBLLST                        0 B_TEXT           |
+      5B0 CEEBETBL                       10 V-CON | CEEUOPT          $UNRESOLVED(W)                                     |
+      5B4 CEEBETBL                       14 V-CON | CEEBTRM          CEEBTRM                         0 B_TEXT           |
+      5BC CEEBETBL                       1C V-CON | CEEBPUBT         CEEBPUBT                        0 B_TEXT           |
+      5C0 CEEBETBL                       20 V-CON | IEWBLIT          IEWBLIT                         0 B_LIT            |
+
+
+1                                       C R O S S - R E F E R E N C E  T A B L E
+                                        _________________________________________
+
+ TEXT CLASS = B_TEXT
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+      624 CEESTART                       5C A-CON | CEEMAIN          $UNRESOLVED(W)                                     |
+      634 CEESTART                       6C C-LEN |                  $NON-RELOCATABLE                  B_PRV            |
+      660 CEESTART                       98 A-CON | CEEFMAIN         $UNRESOLVED(W)                                     |
+      66C CEESTART                       A4 A-CON | CEEBETBL         CEEBETBL                        0 B_TEXT           |
+      670 CEESTART                       A8 A-CON | CEEROOTA         $UNRESOLVED(W)                                     |
+      674 CEESTART                       AC A-CON | CEEROOTD         $UNRESOLVED(W)                                     |
+      754 CEEBTRM                        6C A-CON | CEEBPUBT         CEEBPUBT                        0 B_TEXT           |
+      840 CEEBLLST                       10 A-CON | CEESG000         $UNRESOLVED(W)                                     |
+      844 CEEBLLST                       14 A-CON | CEESG001         $UNRESOLVED(W)                                     |
+      848 CEEBLLST                       18 A-CON | CEESG002         $UNRESOLVED(W)                                     |
+      84C CEEBLLST                       1C A-CON | CEESG003         $UNRESOLVED(W)                                     |
+      850 CEEBLLST                       20 A-CON | CEESG004         CEESG004                        0 B_TEXT           |
+      854 CEEBLLST                       24 A-CON | CEESG005         $UNRESOLVED(W)                                     |
+      858 CEEBLLST                       28 A-CON | CEESG006         $UNRESOLVED(W)                                     |
+      85C CEEBLLST                       2C A-CON | CEESG007         $UNRESOLVED(W)                                     |
+      860 CEEBLLST                       30 A-CON | CEESG008         $UNRESOLVED(W)                                     |
+      864 CEEBLLST                       34 A-CON | CEESG009         $UNRESOLVED(W)                                     |
+      868 CEEBLLST                       38 A-CON | CEESG010         $UNRESOLVED(W)                                     |
+      86C CEEBLLST                       3C A-CON | CEESG011         $UNRESOLVED(W)                                     |
+      870 CEEBLLST                       40 A-CON | CEESG012         $UNRESOLVED(W)                                     |
+      874 CEEBLLST                       44 A-CON | CEESG013         $UNRESOLVED(W)                                     |
+      878 CEEBLLST                       48 A-CON | CEESG014         $UNRESOLVED(W)                                     |
+      87C CEEBLLST                       4C A-CON | CEESG015         $UNRESOLVED(W)                                     |
+      880 CEEBLLST                       50 A-CON | CEESG016         $UNRESOLVED(W)                                     |
+      B80 CEEBPIRA                      230 A-CON | CEEBPUBT         CEEBPUBT                        0 B_TEXT           |
+
+
+ TEXT CLASS = B_LIT
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+       28 IEWBLIT                        28 L TOKE|                                                                     |
+       50 IEWBLIT                        50 C-LEN |                  $NON-RELOCATABLE                  C_CODE           |
+       54 IEWBLIT                        54 A-CON |                                                    C_CODE           |
+       70 IEWBLIT                        70 C-LEN |                  $NON-RELOCATABLE                  C_WSA            |
+       90 IEWBLIT                        90 C-LEN |                  $NON-RELOCATABLE                  C_@@PPA2         |
+       94 IEWBLIT                        94 A-CON |                                                    C_@@PPA2         |
+       B0 IEWBLIT                        B0 C-LEN |                  $NON-RELOCATABLE                  C_@@CSINIT       |
+       B4 IEWBLIT                        B4 A-CON |                                                    C_@@CSINIT       |
+       D0 IEWBLIT                        D0 C-LEN |                  $NON-RELOCATABLE                  B_TEXT           |
+       D4 IEWBLIT                        D4 A-CON |                                                    B_TEXT           |
+       F0 IEWBLIT                        F0 C-LEN |                  $NON-RELOCATABLE                  B_LIT            |
+       F4 IEWBLIT                        F4 A-CON |                                                    B_LIT            |
+
+
+ TEXT CLASS = C_WSA
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+1  OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+       1C DATDEMO#S                      1C A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+
+
+1                                       C R O S S - R E F E R E N C E  T A B L E
+                                        _________________________________________
+
+ TEXT CLASS = C_WSA
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+       28 DATDEMO#S                      28 A-CON | DATDEMO#S        $PRIV000003                    10 C_WSA            |
+       2C DATDEMO#S                      2C A-CON | DATDEMO#C        DATDEMO                         0 C_CODE           |
+       74 DATDEMO#S                      74 V-CON | DATDEMO          DATDEMO                         0 C_CODE           |
+       88 DATDEMO#S                      88 A-CON | DATDEMO#S        $PRIV000003                    10 C_WSA            |
+       B4 DATSUB#S                       B4 A-CON | DATSUB#S         $PRIV000003                    A0 C_WSA            |
+       B8 DATSUB#S                       B8 A-CON | DATSUB#C         DATSUB                          0 C_CODE           |
+      100 DATSUB#S                      100 V-CON | DATSUB           DATSUB                          0 C_CODE           |
+      114 DATSUB#S                      114 A-CON | DATSUB#S         $PRIV000003                    A0 C_WSA            |
+                                        *** E N D  O F  C R O S S  R E F E R E N C E ***
+
+
+
+                                 *** O P E R A T I O N   S U M M A R Y   R E P O R T ***
+
+1PROCESSING OPTIONS:
+
+    ALIASES             NO
+    ALIGN2              NO
+    AMODE               UNSPECIFIED
+    CALL                YES
+    CASE                UPPER
+    COMPAT              UNSPECIFIED
+    COMPRESS            AUTO
+    DCBS                NO
+    DYNAM               NO
+    EXTATTR             UNSPECIFIED
+    EXITS:              NONE
+    FILL                NONE
+    GID                 UNSPECIFIED
+    HOBSET              NO
+    INFO                NO
+    LET                 04
+    LINECT              060
+    LIST                SUMMARY
+    LISTPRIV            NO
+    LONGPARM            NO
+    MAP                 NO
+    MAXBLK              032760
+    MODMAP              NO
+    MSGLEVEL            00
+    OVLY                NO
+    PRINT               YES
+    RES                 NO
+    REUSABILITY         UNSPECIFIED
+    RMODE               UNSPECIFIED
+    RMODEX              NO
+    SIGN                NO
+    STORENX             NOREPLACE
+    STRIPCL             NO
+    STRIPSEC            NO
+    SYMTRACE
+    TERM                NO
+    TRAP                ON
+    UID                 UNSPECIFIED
+    UPCASE              NO
+    WKSPACE             000000K,000000K
+    XCAL                NO
+    XREF                YES
+    ***END OF OPTIONS***
+
+
+
+
+1SAVE OPERATION SUMMARY:
+
+    MEMBER NAME         DATDEMO
+    LOAD LIBRARY        NLOPEZ.VSCODE.LOAD
+    PROGRAM TYPE        PROGRAM OBJECT(FORMAT 3)
+    VOLUME SERIAL       C4USR1
+    DISPOSITION         REPLACED
+    TIME OF SAVE        16.02.44  JAN 15, 2022
+
+
+1SAVE MODULE ATTRIBUTES:
+
+    AC                  000
+    AMODE                31
+    COMPRESSION         NONE
+    DC                  NO
+    EDITABLE            YES
+    EXCEEDS 16MB        NO
+    EXECUTABLE          YES
+    LONGPARM            NO
+    MIGRATABLE          NO
+    OL                  NO
+    OVLY                NO
+    PACK,PRIME          NO,NO
+    PAGE ALIGN          NO
+    REFR                NO
+    RENT                NO
+    REUS                NO
+    RMODE               ANY
+    SCTR                NO
+    SIGN                NO
+    SSI
+    SYM GENERATED       NO
+    TEST                NO
+    XPLINK              NO
+    MODULE SIZE (HEX)   00001EBC
+    DASD SIZE (HEX)     0000B000
+
+
+1 ENTRY POINT AND ALIAS SUMMARY:
+
+  NAME:            ENTRY TYPE AMODE C_OFFSET CLASS NAME        STATUS
+
+  DATDEMO           MAIN_EP      31 00000000 C_CODE
+
+                          *** E N D   O F   O P E R A T I O N   S U M M A R Y   R E P O R T ***
+
+
+
+
+1z/OS V2 R4 BINDER     16:02:43 SATURDAY JANUARY 15, 2022
+ BATCH EMULATOR  JOB(DBBP7   ) STEP(*OMVSEX ) PGM= IEWBLINK
+ IEW2008I 0F03 PROCESSING COMPLETED.  RETURN CODE =  0.
+
+
+
+1----------------------
+ MESSAGE SUMMARY REPORT
+ ----------------------
+  TERMINAL MESSAGES      (SEVERITY = 16)
+  NONE
+
+  SEVERE MESSAGES        (SEVERITY = 12)
+  NONE
+
+  ERROR MESSAGES         (SEVERITY = 08)
+  NONE
+
+  WARNING MESSAGES       (SEVERITY = 04)
+  NONE
+
+  INFORMATIONAL MESSAGES (SEVERITY = 00)
+  2008  2278  2322
+
+
+  **** END OF MESSAGE SUMMARY REPORT ****
+
