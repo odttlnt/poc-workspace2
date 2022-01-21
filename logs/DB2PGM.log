@@ -1,0 +1,818 @@
+DB2 SQL PRECOMPILER         VERSION 12 REL. 1.0                                                       PAGE 1
+
+
+
+OPTIONS SPECIFIED: HOST(IBMCOB),APOST,APOSTSQL,SOURCE,XREF,VERSION(AUTO),CCSID(37)
+DSNHDECP LOADED FROM - (DSNC10.SDSNLOAD(DSNHDECP))
+
+OPTIONS USED - SPECIFIED OR DEFAULTED
+     APOST
+     APOSTSQL
+     ATTACH(TSO)
+     CCSID(37)
+     CONNECT(2)
+     DEC(15)
+     DECP(DSNHDECP)
+     FLAG(I)
+     HOST(IBMCOB)
+     LINECOUNT(60)
+     MARGINS(8,72)
+     SQLLEVEL(V12R1M500)
+     ONEPASS
+     OPTIONS
+     PERIOD
+     SOURCE
+     SQL(DB2)
+     STDSQL(NO)
+     VERSION(2022-01-14-15.08.20.905408)
+     XREFDB2 SQL PRECOMPILER         VERSION 12 REL. 1.0                                                       PAGE 2
+
+        1            ID DIVISION.
+        2            PROGRAM-ID. DB2PGM.
+        3            ENVIRONMENT DIVISION.
+        4            DATA DIVISION.
+        5            WORKING-STORAGE SECTION.
+        6                EXEC SQL INCLUDE ORG   END-EXEC.
+        7           ******************************************************************
+        8           * DCLGEN TABLE(Q.ORG)                                            *
+        9           *        LIBRARY(NLOPEZ.IDZ.COPY(ORG))                           *
+       10           *        ACTION(REPLACE)                                         *
+       11           *        LANGUAGE(COBOL)                                         *
+       12           *        STRUCTURE(ORG)                                          *
+       13           *        APOST                                                   *
+       14           *        LABEL(YES)                                              *
+       15           *        DBCSDELIM(NO)                                           *
+       16           *        COLSUFFIX(YES)                                          *
+       17           *        INDVAR(YES)                                             *
+       18           * ... IS THE DCLGEN COMMAND THAT MADE THE FOLLOWING STATEMENTS   *
+       19           ******************************************************************
+       20                EXEC SQL DECLARE Q.ORG TABLE
+       21                ( DEPTNUMB                       SMALLINT NOT NULL,
+       22                  DEPTNAME                       VARCHAR(14),
+       23                  MANAGER                        SMALLINT,
+       24                  DIVISION                       VARCHAR(10),
+       25                  LOCATION                       VARCHAR(13)
+       26                ) END-EXEC.
+       27           ******************************************************************
+       28           * COBOL DECLARATION FOR TABLE Q.ORG                              *
+       29           ******************************************************************
+       30            01  ORG.
+       31           *    *************************************************************
+       32                10 DEPTNUMB             PIC S9(4) USAGE COMP.
+       33           *    *************************************************************
+       34                10 DEPTNAME.
+       35                   49 DEPTNAME-LEN      PIC S9(4) USAGE COMP.
+       36                   49 DEPTNAME-TEXT     PIC X(14).
+       37           *    *************************************************************
+       38                10 MANAGER              PIC S9(4) USAGE COMP.
+       39           *    *************************************************************
+       40                10 O_DIVISION.
+       41                   49 DIVISION-LEN      PIC S9(4) USAGE COMP.
+       42                   49 DIVISION-TEXT     PIC X(10).
+       43           *    *************************************************************
+       44                10 LOCATION.
+       45                   49 LOCATION-LEN      PIC S9(4) USAGE COMP.
+       46                   49 LOCATION-TEXT     PIC X(13).
+       47           ******************************************************************
+       48           * INDICATOR VARIABLE STRUCTURE                                   *
+       49           ******************************************************************
+       50            01  IORG.
+       51                10 INDSTRUC           PIC S9(4) USAGE COMP OCCURS 5 TIMES.
+       52           ******************************************************************
+       53           * THE NUMBER OF COLUMNS DESCRIBED BY THIS DECLARATION IS 5       *
+       54           ******************************************************************
+       55                EXEC SQL INCLUDE SQLCA END-EXEC.
+       56            PROCEDURE DIVISION.
+       57                EXEC SQL
+       58                   SELECT DEPTNAME INTO :DEPTNAMEDB2 SQL PRECOMPILER         VERSION 12 REL. 1.0                                                       PAGE 3
+
+       59                    FROM  Q.org
+       60                    WHERE DEPTNUMB = 15
+       61                END-EXEC.
+       62                DISPLAY 'Selected  Dept 10 from Org value=' DEPTNAME-TEXT.
+       63                STOP RUN.DB2 SQL PRECOMPILER         SYMBOL CROSS-REFERENCE LISTING                                            PAGE 4
+
+DATA NAMES                     DEFN     REFERENCE
+
+"DEPTNAME"                     22       VARCHAR(14) COLUMN IN "Q"."ORG"
+
+"DEPTNAME"                     ****     COLUMN OR GLOBAL VARIABLE
+                                        58
+"DEPTNUMB"                     21       SMALL INTEGER COLUMN (NOT NULL) IN "Q"."ORG"
+
+"DEPTNUMB"                     ****     COLUMN OR GLOBAL VARIABLE
+                                        60
+"DIVISION"                     24       VARCHAR(10) COLUMN IN "Q"."ORG"
+
+"LOCATION"                     25       VARCHAR(13) COLUMN IN "Q"."ORG"
+
+"MANAGER"                      23       SMALL INTEGER COLUMN IN "Q"."ORG"
+
+"ORG"                          20       TABLE IN "Q"
+                                        59
+"Q"                            ****     AUTHID
+                                        20 59
+DEPTNAME                       34       VARCHAR(14) IN ORG
+                                        58
+DEPTNAME-LEN                   35       IN DEPTNAME
+
+DEPTNAME-TEXT                  36       IN DEPTNAME
+
+DEPTNUMB                       32       SMALL INTEGER IN ORG
+
+DIVISION-LEN                   41       IN O_DIVISION
+
+DIVISION-TEXT                  42       IN O_DIVISION
+
+INDSTRUC                       51       ARRAY(5) SMALL INTEGER IN IORG
+
+IORG                           50       STRUCTURE
+
+LOCATION                       44       VARCHAR(13) IN ORG
+
+LOCATION-LEN                   45       IN LOCATION
+
+LOCATION-TEXT                  46       IN LOCATION
+
+MANAGER                        38       SMALL INTEGER IN ORG
+
+ORG                            30       STRUCTURE
+
+O_DIVISION                     40       VARCHAR(10) IN ORG
+DB2 SQL PRECOMPILER         STATISTICS                                                                PAGE 5
+
+SOURCE STATISTICS
+  SOURCE LINES READ: 63
+  NUMBER OF SYMBOLS: 24
+  SYMBOL TABLE BYTES EXCLUDING ATTRIBUTES: 4080
+
+
+THERE WERE 1 MESSAGES FOR THIS PROGRAM.
+THERE WERE 0 MESSAGES SUPPRESSED BY THE FLAG OPTION.
+253488 BYTES OF STORAGE WERE USED BY THE PRECOMPILER.
+RETURN CODE IS 4
+PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901                 Date 01/14/2022  Time 09:08:24   Page     1
+
+Invocation parameters:
+ source,cp(37)
+
+Options in effect:
+ NOADATA
+   ADV
+   AFP(NOVOLATILE)
+   QUOTE
+   ARCH(8)
+   ARITH(COMPAT)
+ NOAWO
+ NOBLOCK0
+   BUFSIZE(4096)
+ NOCICS
+   CODEPAGE(37)
+ NOCOMPILE(S)
+ NOCOPYLOC
+ NOCOPYRIGHT
+ NOCURRENCY
+   DATA(31)
+   DBCS
+ NODECK
+ NODEFINE
+ NODIAGTRUNC
+   DISPSIGN(COMPAT)
+ NODLL
+ NODUMP
+ NODYNAM
+ NOEXIT
+ NOEXPORTALL
+ NOFASTSRT
+   FLAG(I,I)
+ NOFLAGSTD
+   HGPR(PRESERVE)
+ NOINITCHECK
+ NOINITIAL
+   INLINE
+   INTDATE(ANSI)
+   LANGUAGE(EN)
+   LINECOUNT(60)
+ NOLIST
+   LP(32)
+ NOMAP
+   MAXPCF(100000)
+ NOMDECK
+ NONAME
+   NSYMBOL(NATIONAL)
+ NONUMBER
+ NONUMCHECK
+   NUMPROC(NOPFD)
+   OBJECT
+ NOOFFSET
+   OPTIMIZE(0)
+   OUTDD(SYSOUT)
+ NOPARMCHECK
+   PGMNAME(COMPAT)
+   QUALIFY(COMPAT)
+   RENTPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901                 Date 01/14/2022  Time 09:08:24   Page     2
+
+   RMODE(AUTO)
+ NORULES
+ NOSERVICE
+   SEQUENCE
+   SOURCE
+   SPACE(1)
+ NOSQL
+   SQLCCSID
+ NOSQLIMS
+ NOSSRANGE
+ NOSTGOPT
+   SUPPRESS
+ NOTERM
+ NOTEST(NODWARF,NOSOURCE,NOSEPARATE)
+ NOTHREAD
+   TRUNC(STD)
+ NOVBREF
+   VLR(STANDARD)
+   VSAMOPENFS(COMPAT)
+ NOWORD
+   XMLPARSE(XMLSS)
+   XREF(FULL)
+   ZONEDATA(PFD)
+   ZWBPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DB2PGM    Date 01/14/2022  Time 09:08:24   Page     3
+  LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
+
+  000001                ID DIVISION.
+  000002                PROGRAM-ID. DB2PGM.
+  000003                ENVIRONMENT DIVISION.
+  000004                DATA DIVISION.
+  000005                WORKING-STORAGE SECTION.
+  000006               *****EXEC SQL INCLUDE ORG   END-EXEC.
+  000007               ******************************************************************
+  000008               * DCLGEN TABLE(Q.ORG)                                            *
+  000009               *        LIBRARY(NLOPEZ.IDZ.COPY(ORG))                           *
+  000010               *        ACTION(REPLACE)                                         *
+  000011               *        LANGUAGE(COBOL)                                         *
+  000012               *        STRUCTURE(ORG)                                          *
+  000013               *        APOST                                                   *
+  000014               *        LABEL(YES)                                              *
+  000015               *        DBCSDELIM(NO)                                           *
+  000016               *        COLSUFFIX(YES)                                          *
+  000017               *        INDVAR(YES)                                             *
+  000018               * ... IS THE DCLGEN COMMAND THAT MADE THE FOLLOWING STATEMENTS   *
+  000019               ******************************************************************
+  000020               *****EXEC SQL DECLARE Q.ORG TABLE
+  000021               *****( DEPTNUMB                       SMALLINT NOT NULL,
+  000022               *****  DEPTNAME                       VARCHAR(14),
+  000023               *****  MANAGER                        SMALLINT,
+  000024               *****  DIVISION                       VARCHAR(10),
+  000025               *****  LOCATION                       VARCHAR(13)
+  000026               *****) END-EXEC.
+  000027               ******************************************************************
+  000028               * COBOL DECLARATION FOR TABLE Q.ORG                              *
+  000029               ******************************************************************
+  000030                01  ORG.
+  000031               *    *************************************************************
+  000032                    10 DEPTNUMB             PIC S9(4) USAGE COMP.
+  000033               *    *************************************************************
+  000034                    10 DEPTNAME.
+  000035                       49 DEPTNAME-LEN      PIC S9(4) USAGE COMP.
+  000036                       49 DEPTNAME-TEXT     PIC X(14).
+  000037               *    *************************************************************
+  000038                    10 MANAGER              PIC S9(4) USAGE COMP.
+  000039               *    *************************************************************
+  000040                    10 O_DIVISION.
+  000041                       49 DIVISION-LEN      PIC S9(4) USAGE COMP.
+  000042                       49 DIVISION-TEXT     PIC X(10).
+  000043               *    *************************************************************
+  000044                    10 LOCATION.
+  000045                       49 LOCATION-LEN      PIC S9(4) USAGE COMP.
+  000046                       49 LOCATION-TEXT     PIC X(13).
+  000047               ******************************************************************
+  000048               * INDICATOR VARIABLE STRUCTURE                                   *
+  000049               ******************************************************************
+  000050                01  IORG.
+  000051                    10 INDSTRUC           PIC S9(4) USAGE COMP OCCURS 5 TIMES.
+  000052               ******************************************************************
+  000053               * THE NUMBER OF COLUMNS DESCRIBED BY THIS DECLARATION IS 5       *
+  000054               ******************************************************************
+  000055               *****EXEC SQL INCLUDE SQLCA END-EXEC.
+  000056                 01 SQLCA.
+  000057                    05 SQLCAID     PIC X(8).PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DB2PGM    Date 01/14/2022  Time 09:08:24   Page     4
+  LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
+
+  000058                    05 SQLCABC     PIC S9(9) COMP-5.
+  000059                    05 SQLCODE     PIC S9(9) COMP-5.
+  000060                    05 SQLERRM.
+  000061                       49 SQLERRML PIC S9(4) COMP-5.
+  000062                       49 SQLERRMC PIC X(70).
+  000063                    05 SQLERRP     PIC X(8).
+  000064                    05 SQLERRD     OCCURS 6 TIMES
+  000065                                   PIC S9(9) COMP-5.
+  000066                    05 SQLWARN.
+  000067                       10 SQLWARN0 PIC X.
+  000068                       10 SQLWARN1 PIC X.
+  000069                       10 SQLWARN2 PIC X.
+  000070                       10 SQLWARN3 PIC X.
+  000071                       10 SQLWARN4 PIC X.
+  000072                       10 SQLWARN5 PIC X.
+  000073                       10 SQLWARN6 PIC X.
+  000074                       10 SQLWARN7 PIC X.
+  000075                    05 SQLEXT.
+  000076                       10 SQLWARN8 PIC X.
+  000077                       10 SQLWARN9 PIC X.
+  000078                       10 SQLWARNA PIC X.
+  000079                       10 SQLSTATE PIC X(5).
+  000080                 01 SQL-VERS.
+  000081                    05 SQL-VERS-PREF    PIC X(04) VALUE 'VER.'.
+  000082                    05 SQL-VERS-DATA    PIC X(64)
+  000083                                        VALUE '2022-01-14-15.08.20.905408'.
+  000084                 77 SQL-TEMP      PIC X(128).
+  000085                 77 DSN-TEMP      PIC S9(9)  COMP-5.
+  000086                 77 DSN-TMP2      PIC S9(18) COMP-3.
+  000087                 77 DSNNROWS      PIC S9(9)  COMP-5.
+  000088                 77 DSNNTYPE      PIC S9(4)  COMP-5.
+  000089                 77 DSNNLEN       PIC S9(4)  COMP-5.
+  000090                 77 SQL-NULL      PIC S9(9) COMP-5 VALUE +0.
+  000091                 77 SQL-INIT-FLAG PIC S9(4) COMP-5 VALUE +0.
+  000092                    88 SQL-INIT-DONE VALUE +1.
+  000093                 77 SQL-FILE-READ      PIC S9(9) COMP-5 VALUE +2.
+  000094                 77 SQL-FILE-CREATE    PIC S9(9) COMP-5 VALUE +8.
+  000095                 77 SQL-FILE-OVERWRITE PIC S9(9) COMP-5 VALUE +16.
+  000096                 77 SQL-FILE-APPEND    PIC S9(9) COMP-5 VALUE +32.
+  000097                 01 SQL-PLIST2.
+  000098                    05 SQL-PLIST-CON   PIC S9(9) COMP-5 VALUE +4195328.
+  000099                    05 SQL-CALLTYPE    PIC S9(4) COMP-5 VALUE +30.
+  000100                    05 SQL-PROG-NAME   PIC X(8)  VALUE X'44423250474D2020'.
+  000101                    05 SQL-TIMESTAMP-1 PIC S9(9) COMP-5 VALUE +459094250.
+  000102                    05 SQL-TIMESTAMP-2 PIC S9(9) COMP-5 VALUE +166490114.
+  000103                    05 SQL-SECTION     PIC S9(4) COMP-5 VALUE +1.
+  000104                    05 SQL-CODEPTR     PIC S9(9) COMP-5.
+  000105                    05 SQL-VPARMPTR    PIC S9(9) COMP-5 VALUE +0.
+  000106                    05 SQL-APARMPTR    PIC S9(9) COMP-5 VALUE +0.
+  000107                    05 FILLER          PIC S9(4) COMP-5 VALUE +1208.
+  000108                    05 SQL-STMT-TYPE   PIC S9(4) COMP-5 VALUE +231.
+  000109                    05 SQL-STMT-NUM    PIC S9(9) COMP-5 VALUE +58.
+  000110                    05 SQL-PLIST-FLG   PIC S9(4) COMP-5 VALUE +0.
+  000111                    05 FILLER          PIC X(18) VALUE
+  000112                       X'000000000000000000000000000000000000'.
+  000113                    05 SQL-AVAR-LIST2.
+  000114                       10 PRE-SQLDAID  PIC X(8)  VALUE 'SQLDA  '.PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DB2PGM    Date 01/14/2022  Time 09:08:24   Page     5
+  LineID  PL SL  ----+-*A-1-B--+----2----+----3----+----4----+----5----+----6----+----7-|--+----8 Map and Cross Reference
+
+  000115                       10 PRE-SQLDABC  PIC S9(9) COMP-5 VALUE +60.
+  000116                       10 PRE-SQLN     PIC S9(4) COMP-5 VALUE +1.
+  000117                       10 PRE-SQLLD    PIC S9(4) COMP-5 VALUE +1.
+  000118                       10 PRE-SQLVAR.
+  000119                         12 SQLVAR-BASE1.
+  000120                           15 SQL-AVAR-TYPE1      PIC S9(4) COMP-5 VALUE +448.
+  000121                           15 SQL-AVAR-LEN1       PIC S9(4) COMP-5 VALUE +14.
+  000122                           15 SQL-AVAR-ADDRS1.
+  000123                              20 SQL-AVAR-ADDR1   PIC S9(9) COMP-5.
+  000124                              20 SQL-AVAR-IND1    PIC S9(9) COMP-5.
+  000125                           15 SQL-AVAR-NAME1.
+  000126                              20 SQL-AVAR-NAMEL1  PIC S9(4) COMP-5 VALUE +0.
+  000127                              20 SQL-AVAR-NAMEC1  PIC X(30) VALUE ' '.
+  000128                PROCEDURE DIVISION.
+  000129                DSNSQL SECTION.
+  000130                SQL-SKIP.
+  000131                    GO TO SQL-INIT-END.                                                   139
+  000132                SQL-INITIAL.
+  000133                    MOVE 1 TO SQL-INIT-FLAG.                                              91
+  000134                    CALL 'DSNHADDR' USING SQL-APARMPTR OF SQL-PLIST2 SQL-AVAR-LIS         EXT 106 97 113
+  000135               -    T2.
+  000136                    CALL 'DSNHADD2' USING SQL-AVAR-ADDRS1 IN                              EXT 122
+  000137                    SQL-AVAR-LIST2 DEPTNAME OF ORG SQL-NULL.                              113 34 30 90
+  000138                    CALL 'DSNHADDR' USING SQL-CODEPTR OF SQL-PLIST2 SQLCA.                EXT 104 97 56
+  000139                SQL-INIT-END.
+  000140                    CONTINUE.
+  000141
+  000142               *****EXEC SQL
+  000143               *****   SELECT DEPTNAME INTO :DEPTNAME
+  000144               *****    FROM  Q.org
+  000145               *****    WHERE DEPTNUMB = 15
+  000146               *****END-EXEC.
+  000147                    PERFORM SQL-INITIAL UNTIL SQL-INIT-DONE                               132 92
+  000148                    CALL 'DSNHLI' USING SQL-PLIST2                                        EXT 97
+  000149                    END-CALL.
+  000150                    DISPLAY 'Selected  Dept 10 from Org value=' DEPTNAME-TEXT.            36
+  000151                    STOP RUN.PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DB2PGM    Date 01/14/2022  Time 09:08:24   Page     6
+
+An "M" preceding a data-name reference indicates that the data-name is modified by this reference.
+
+ Defined   Cross-reference of data names   References
+
+      34   DEPTNAME . . . . . . . . . . .  137
+      35   DEPTNAME-LEN
+      36   DEPTNAME-TEXT. . . . . . . . .  150
+      32   DEPTNUMB
+      41   DIVISION-LEN
+      42   DIVISION-TEXT
+      85   DSN-TEMP
+      86   DSN-TMP2
+      89   DSNNLEN
+      87   DSNNROWS
+      88   DSNNTYPE
+      51   INDSTRUC
+      50   IORG
+      44   LOCATION
+      45   LOCATION-LEN
+      46   LOCATION-TEXT
+      38   MANAGER
+      40   O_DIVISION
+      30   ORG. . . . . . . . . . . . . .  137
+     115   PRE-SQLDABC
+     114   PRE-SQLDAID
+     117   PRE-SQLLD
+     116   PRE-SQLN
+     118   PRE-SQLVAR
+     106   SQL-APARMPTR . . . . . . . . .  134
+     122   SQL-AVAR-ADDRS1. . . . . . . .  136
+     123   SQL-AVAR-ADDR1
+     124   SQL-AVAR-IND1
+     121   SQL-AVAR-LEN1
+     113   SQL-AVAR-LIST2 . . . . . . . .  134 137
+     127   SQL-AVAR-NAMEC1
+     126   SQL-AVAR-NAMEL1
+     125   SQL-AVAR-NAME1
+     120   SQL-AVAR-TYPE1
+      99   SQL-CALLTYPE
+     104   SQL-CODEPTR. . . . . . . . . .  138
+      96   SQL-FILE-APPEND
+      94   SQL-FILE-CREATE
+      95   SQL-FILE-OVERWRITE
+      93   SQL-FILE-READ
+      92   SQL-INIT-DONE. . . . . . . . .  147
+      91   SQL-INIT-FLAG. . . . . . . . .  M133
+      90   SQL-NULL . . . . . . . . . . .  137
+      98   SQL-PLIST-CON
+     110   SQL-PLIST-FLG
+      97   SQL-PLIST2 . . . . . . . . . .  134 138 148
+     100   SQL-PROG-NAME
+     103   SQL-SECTION
+     109   SQL-STMT-NUM
+     108   SQL-STMT-TYPE
+      84   SQL-TEMP
+     101   SQL-TIMESTAMP-1
+     102   SQL-TIMESTAMP-2
+      80   SQL-VERSPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DB2PGM    Date 01/14/2022  Time 09:08:24   Page     7
+
+ Defined   Cross-reference of data names   References
+
+
+      82   SQL-VERS-DATA
+      81   SQL-VERS-PREF
+     105   SQL-VPARMPTR
+      56   SQLCA. . . . . . . . . . . . .  138
+      58   SQLCABC
+      57   SQLCAID
+      59   SQLCODE
+      64   SQLERRD
+      60   SQLERRM
+      62   SQLERRMC
+      61   SQLERRML
+      63   SQLERRP
+      75   SQLEXT
+      79   SQLSTATE
+     119   SQLVAR-BASE1
+      66   SQLWARN
+      78   SQLWARNA
+      67   SQLWARN0
+      68   SQLWARN1
+      69   SQLWARN2
+      70   SQLWARN3
+      71   SQLWARN4
+      72   SQLWARN5
+      73   SQLWARN6
+      74   SQLWARN7
+      76   SQLWARN8
+      77   SQLWARN9PP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DB2PGM    Date 01/14/2022  Time 09:08:24   Page     8
+
+Context usage is indicated by the letter preceding a procedure-name reference.
+These letters and their meanings are:
+    A = ALTER (procedure-name)
+    D = GO TO (procedure-name) DEPENDING ON
+    E = End of range of (PERFORM) through (procedure-name)
+    G = GO TO (procedure-name)
+    P = PERFORM (procedure-name)
+    T = (ALTER) TO PROCEED TO (procedure-name)
+    U = USE FOR DEBUGGING (procedure-name)
+
+ Defined   Cross-reference of procedures   References
+
+     129   DSNSQL
+     139   SQL-INIT-END . . . . . . . . .  G131
+     132   SQL-INITIAL. . . . . . . . . .  P147
+     130   SQL-SKIPPP 5655-EC6 IBM Enterprise COBOL for z/OS  6.3.0 P200901       DB2PGM    Date 01/14/2022  Time 09:08:24   Page     9
+
+ Defined   Cross-reference of programs     References
+
+       2   DB2PGM
+EXTERNAL   DSNHADDR . . . . . . . . . . .  134 138
+EXTERNAL   DSNHADD2 . . . . . . . . . . .  136
+EXTERNAL   DSNHLI . . . . . . . . . . . .  148
+
+
+* Statistics for COBOL program DB2PGM:
+*    Source records = 151
+*    Data Division statements = 81
+*    Procedure Division statements = 10
+*    Generated COBOL statements = 0
+*    Program complexity factor = 11
+
+End of compilation 1,  program DB2PGM,  no statements flagged.
+
+Return code 0
+1z/OS V2 R4 BINDER     09:08:30 FRIDAY JANUARY 14, 2022
+ BATCH EMULATOR  JOB(DBBP7   ) STEP(*OMVSEX ) PGM= IEWBLINK
+ IEW2278I B352 INVOCATION PARAMETERS - XREF
+ IEW2322I 1220  1     INCLUDE OBJECT(DB2PGM)
+ IEW2322I 1220  2      IDENTIFY DB2PGM(DBB\ABC................................x)
+
+
+1                                       C R O S S - R E F E R E N C E  T A B L E
+                                        _________________________________________
+
+ TEXT CLASS = C_CODE
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+       24 DB2PGM                         24 A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+       2C DB2PGM                         2C A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+       30 DB2PGM                         30 A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+       34 DB2PGM                         34 A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+       38 DB2PGM                         38 V-CON | IGZXBST4         IGZXBST4                        0 B_TEXT           |
+       3C DB2PGM                         3C A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+       44 DB2PGM                         44 A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+      670 DB2PGM                        670 Q-CON | DB2PGM#S         $NON-RELOCATABLE               10 C_WSA            |
+      674 DB2PGM                        674 V-CON | DSNHADDR         DSNHADDR                        0 B_TEXT           |
+      678 DB2PGM                        678 V-CON | DSNHADD2         DSNHADD2                        0 B_TEXT           |
+      67C DB2PGM                        67C V-CON | DSNHLI           DSNELI                         10 B_TEXT           |
+      680 DB2PGM                        680 V-CON | IGZXPRS          IGZXPRS                         0 B_TEXT           |
+      684 DB2PGM                        684 V-CON | IGZXCMSG         IGZXCMSG                        0 B_TEXT           |
+      688 DB2PGM                        688 A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+      68C DB2PGM                        68C A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+      690 DB2PGM                        690 V-CON | IGZXDSP          IGZXDSP                         0 B_TEXT           |
+      694 DB2PGM                        694 V-CON | IGZXTREC         IGZXTREC                        0 B_TEXT           |
+      698 DB2PGM                        698 V-CON | IGZXRT1          IGZXRT1                         0 B_TEXT           |
+      6B8 DB2PGM                        6B8 A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+      6C4 DB2PGM                        6C4 A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+      6F4 DB2PGM                        6F4 A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+      718 DB2PGM                        718 A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+      7D4 DB2PGM                        7D4 A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+      9F4 DB2PGM                        9F4 A-CON | CEESTART         CEESTART                        0 B_TEXT           |
+      9F4 DB2PGM                        9F4 A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+      A0C DB2PGM                        A0C A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+      A10 DB2PGM                        A10 V-CON | CEESTART         CEESTART                        0 B_TEXT           |
+      A14 DB2PGM                        A14 V-CON | CEEBETBL         CEEBETBL                        0 B_TEXT           |
+      A5C DB2PGM                        A5C Q-CON | DB2PGM#S         $NON-RELOCATABLE               10 C_WSA            |
+
+
+ TEXT CLASS = C_@@PPA2
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+        4 $PRIV000010                     4 A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+
+
+ TEXT CLASS = C_@@CSINIT
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+        0 $PRIV000011                     0 A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+
+
+1                                       C R O S S - R E F E R E N C E  T A B L E
+                                        _________________________________________
+
+ TEXT CLASS = C_@@CSINIT
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+
+
+ TEXT CLASS = B_TEXT
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+       24 CEESG004                       14 A-CON | IGZEOPT          $UNRESOLVED(W)                                     |
+       28 CEESG004                       18 A-CON | IGZETUN          $UNRESOLVED(W)                                     |
+       2C CEESG004                       1C A-CON | IGZXRES1         $UNRESOLVED(W)                                     |
+       30 CEESG004                       20 A-CON | IEWBLIT          IEWBLIT                         0 B_LIT            |
+      950 IGZXBST4                      450 V-CON | CEEINT           CEEBPIRA                        0 B_TEXT           |
+      954 IGZXBST4                      454 V-CON | CEEARLU          CEEARLU                         0 B_TEXT           |
+      958 IGZXBST4                      458 A-CON | CEESG004         CEESG004                        0 B_TEXT           |
+      9E4 CEEBETBL                        4 V-CON | CEEBXITA         $UNRESOLVED(W)                                     |
+      9E8 CEEBETBL                        8 V-CON | CEEBINT          CEEBINT                         0 B_TEXT           |
+      9EC CEEBETBL                        C V-CON | CEEBLLST         CEEBLLST                        0 B_TEXT           |
+      9F0 CEEBETBL                       10 V-CON | CEEUOPT          $UNRESOLVED(W)                                     |
+      9F4 CEEBETBL                       14 V-CON | CEEBTRM          CEEBTRM                         0 B_TEXT           |
+      9FC CEEBETBL                       1C V-CON | CEEBPUBT         CEEBPUBT                        0 B_TEXT           |
+      A00 CEEBETBL                       20 V-CON | IEWBLIT          IEWBLIT                         0 B_LIT            |
+      A64 CEESTART                       5C A-CON | CEEMAIN          $UNRESOLVED(W)                                     |
+      A74 CEESTART                       6C C-LEN |                  $NON-RELOCATABLE                  B_PRV            |
+      AA0 CEESTART                       98 A-CON | CEEFMAIN         $UNRESOLVED(W)                                     |
+      AAC CEESTART                       A4 A-CON | CEEBETBL         CEEBETBL                        0 B_TEXT           |
+      AB0 CEESTART                       A8 A-CON | CEEROOTA         $UNRESOLVED(W)                                     |
+      AB4 CEESTART                       AC A-CON | CEEROOTD         $UNRESOLVED(W)                                     |
+      B94 CEEBTRM                        6C A-CON | CEEBPUBT         CEEBPUBT                        0 B_TEXT           |
+      C80 CEEBLLST                       10 A-CON | CEESG000         $UNRESOLVED(W)                                     |
+      C84 CEEBLLST                       14 A-CON | CEESG001         $UNRESOLVED(W)                                     |
+      C88 CEEBLLST                       18 A-CON | CEESG002         $UNRESOLVED(W)                                     |
+      C8C CEEBLLST                       1C A-CON | CEESG003         $UNRESOLVED(W)                                     |
+      C90 CEEBLLST                       20 A-CON | CEESG004         CEESG004                        0 B_TEXT           |
+      C94 CEEBLLST                       24 A-CON | CEESG005         $UNRESOLVED(W)                                     |
+      C98 CEEBLLST                       28 A-CON | CEESG006         $UNRESOLVED(W)                                     |
+      C9C CEEBLLST                       2C A-CON | CEESG007         $UNRESOLVED(W)                                     |
+      CA0 CEEBLLST                       30 A-CON | CEESG008         $UNRESOLVED(W)                                     |
+      CA4 CEEBLLST                       34 A-CON | CEESG009         $UNRESOLVED(W)                                     |
+      CA8 CEEBLLST                       38 A-CON | CEESG010         $UNRESOLVED(W)                                     |
+      CAC CEEBLLST                       3C A-CON | CEESG011         $UNRESOLVED(W)                                     |
+      CB0 CEEBLLST                       40 A-CON | CEESG012         $UNRESOLVED(W)                                     |
+      CB4 CEEBLLST                       44 A-CON | CEESG013         $UNRESOLVED(W)                                     |
+      CB8 CEEBLLST                       48 A-CON | CEESG014         $UNRESOLVED(W)                                     |
+      CBC CEEBLLST                       4C A-CON | CEESG015         $UNRESOLVED(W)                                     |
+      CC0 CEEBLLST                       50 A-CON | CEESG016         $UNRESOLVED(W)                                     |
+      FC0 CEEBPIRA                      230 A-CON | CEEBPUBT         CEEBPUBT                        0 B_TEXT           |
+
+
+1                                       C R O S S - R E F E R E N C E  T A B L E
+                                        _________________________________________
+
+ TEXT CLASS = B_TEXT
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+
+
+ TEXT CLASS = B_LIT
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+       28 IEWBLIT                        28 L TOKE|                                                                     |
+       50 IEWBLIT                        50 C-LEN |                  $NON-RELOCATABLE                  C_CODE           |
+       54 IEWBLIT                        54 A-CON |                                                    C_CODE           |
+       70 IEWBLIT                        70 C-LEN |                  $NON-RELOCATABLE                  C_WSA            |
+       90 IEWBLIT                        90 C-LEN |                  $NON-RELOCATABLE                  C_@@PPA2         |
+       94 IEWBLIT                        94 A-CON |                                                    C_@@PPA2         |
+       B0 IEWBLIT                        B0 C-LEN |                  $NON-RELOCATABLE                  C_@@CSINIT       |
+       B4 IEWBLIT                        B4 A-CON |                                                    C_@@CSINIT       |
+       D0 IEWBLIT                        D0 C-LEN |                  $NON-RELOCATABLE                  B_TEXT           |
+       D4 IEWBLIT                        D4 A-CON |                                                    B_TEXT           |
+       F0 IEWBLIT                        F0 C-LEN |                  $NON-RELOCATABLE                  B_LIT            |
+       F4 IEWBLIT                        F4 A-CON |                                                    B_LIT            |
+
+
+ TEXT CLASS = C_WSA
+
+ ---------------  R E F E R E N C E  --------------------------  T A R G E T  -------------------------------------------
+   CLASS                            ELEMENT       |                                            ELEMENT                  |
+   OFFSET SECT/PART(ABBREV)          OFFSET  TYPE | SYMBOL(ABBREV)   SECTION (ABBREV)           OFFSET CLASS NAME       |
+                                                  |                                                                     |
+       1C DB2PGM#S                       1C A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+       28 DB2PGM#S                       28 A-CON | DB2PGM#S         $PRIV000003                    10 C_WSA            |
+       2C DB2PGM#S                       2C A-CON | DB2PGM#C         DB2PGM                          0 C_CODE           |
+       74 DB2PGM#S                       74 V-CON | DB2PGM           DB2PGM                          0 C_CODE           |
+       88 DB2PGM#S                       88 A-CON | DB2PGM#S         $PRIV000003                    10 C_WSA            |
+                                        *** E N D  O F  C R O S S  R E F E R E N C E ***
+
+
+
+                                 *** O P E R A T I O N   S U M M A R Y   R E P O R T ***
+
+1PROCESSING OPTIONS:
+
+    ALIASES             NO
+    ALIGN2              NO
+    AMODE               UNSPECIFIED
+    CALL                YES
+    CASE                UPPER
+    COMPAT              UNSPECIFIED
+    COMPRESS            AUTO
+    DCBS                NO
+    DYNAM               NO
+    EXTATTR             UNSPECIFIED
+    EXITS:              NONE
+    FILL                NONE
+    GID                 UNSPECIFIED
+    HOBSET              NO
+    INFO                NO
+    LET                 04
+    LINECT              060
+    LIST                SUMMARY
+    LISTPRIV            NO
+    LONGPARM            NO
+    MAP                 NO
+    MAXBLK              032760
+    MODMAP              NO
+    MSGLEVEL            00
+    OVLY                NO
+    PRINT               YES
+    RES                 NO
+    REUSABILITY         UNSPECIFIED
+    RMODE               UNSPECIFIED
+    RMODEX              NO
+    SIGN                NO
+    STORENX             NOREPLACE
+    STRIPCL             NO
+    STRIPSEC            NO
+    SYMTRACE
+    TERM                NO
+    TRAP                ON
+    UID                 UNSPECIFIED
+    UPCASE              NO
+    WKSPACE             000000K,000000K
+    XCAL                NO
+    XREF                YES
+    ***END OF OPTIONS***
+
+
+
+
+1SAVE OPERATION SUMMARY:
+
+    MEMBER NAME         DB2PGM
+    LOAD LIBRARY        NLOPEZ.VSCODE.LOAD
+    PROGRAM TYPE        PROGRAM OBJECT(FORMAT 3)
+    VOLUME SERIAL       C4USR1
+    DISPOSITION         REPLACED
+    TIME OF SAVE        09.08.31  JAN 14, 2022
+
+
+1SAVE MODULE ATTRIBUTES:
+
+    AC                  000
+    AMODE                31
+    COMPRESSION         NONE
+    DC                  NO
+    EDITABLE            YES
+    EXCEEDS 16MB        NO
+    EXECUTABLE          YES
+    LONGPARM            NO
+    MIGRATABLE          NO
+    OL                  NO
+    OVLY                NO
+    PACK,PRIME          NO,NO
+    PAGE ALIGN          NO
+    REFR                NO
+    RENT                NO
+    REUS                NO
+    RMODE               ANY
+    SCTR                NO
+    SIGN                NO
+    SSI
+    SYM GENERATED       NO
+    TEST                NO
+    XPLINK              NO
+    MODULE SIZE (HEX)   00001C90
+    DASD SIZE (HEX)     0000B000
+
+
+1 ENTRY POINT AND ALIAS SUMMARY:
+
+  NAME:            ENTRY TYPE AMODE C_OFFSET CLASS NAME        STATUS
+
+  DB2PGM            MAIN_EP      31 00000000 C_CODE
+
+                          *** E N D   O F   O P E R A T I O N   S U M M A R Y   R E P O R T ***
+
+
+
+
+1z/OS V2 R4 BINDER     09:08:30 FRIDAY JANUARY 14, 2022
+ BATCH EMULATOR  JOB(DBBP7   ) STEP(*OMVSEX ) PGM= IEWBLINK
+ IEW2008I 0F03 PROCESSING COMPLETED.  RETURN CODE =  0.
+
+
+
+1----------------------
+ MESSAGE SUMMARY REPORT
+ ----------------------
+  TERMINAL MESSAGES      (SEVERITY = 16)
+  NONE
+
+  SEVERE MESSAGES        (SEVERITY = 12)
+  NONE
+
+  ERROR MESSAGES         (SEVERITY = 08)
+  NONE
+
+  WARNING MESSAGES       (SEVERITY = 04)
+  NONE
+
+  INFORMATIONAL MESSAGES (SEVERITY = 00)
+  2008  2278  2322
+
+
+  **** END OF MESSAGE SUMMARY REPORT ****
+
