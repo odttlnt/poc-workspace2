@@ -2,7 +2,7 @@
        PROGRAM-ID. DATDEMO.
       *
       * Simple demo code (NLopez) on local zDT v2.f
-      * feature 1 change here
+      * feature 2 change here
       * Use Pub GITHUB project's DEVELOP branch
       * References COMMON Copybook  DATSHARE
        ENVIRONMENT DIVISION.
