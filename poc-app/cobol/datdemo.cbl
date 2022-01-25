@@ -1,12 +1,9 @@
        ID DIVISION.
        PROGRAM-ID. DATDEMO.
       *
-      * Simple demo code (NLopez) on local zDT v2.e
+      * Simple demo code (NLopez) on local zDT v2.f
       * Use Pub GITHUB project's DEVELOP branch
       * References COMMON Copybook  DATSHARE
-      *
-      * Adding some new text here
-      *
        ENVIRONMENT DIVISION.
        DATA DIVISION.
        WORKING-STORAGE SECTION.
