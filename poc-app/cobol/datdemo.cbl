@@ -2,10 +2,6 @@
        PROGRAM-ID. DATDEMO.
       *
       * Simple demo code (NLopez) on local zDT v2.f
-<<<<<<< develop
-      * feature 2 change here
-=======
->>>>>>> 8870f0d feature 1 commited and pushed
       * Use Pub GITHUB project's DEVELOP branch
       * References COMMON Copybook  DATSHARE
        ENVIRONMENT DIVISION.
