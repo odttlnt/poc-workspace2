@@ -2,7 +2,7 @@
 ## Put this in the apps repo under applicaiton-conf/folder
 ---
 deploy:
-  cics.cicsplex, CICS_Region?
+  *.cics.cicsplex,CICS_Region?
   cics.cmciport: 1490?
   bind.maxrc: 4
   bind.confdir: /u/myhome??/ispf
