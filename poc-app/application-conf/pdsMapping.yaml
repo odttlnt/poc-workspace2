@@ -11,7 +11,7 @@ deploy:
   bind.qualifier: AppDB2Qual?
   bind.subsys: DB2_SSID?
 
-# Maps original file LLQ  to a new or existing target PDS for copy
+# Map the file's deploytype to a target PDS for copy
   pds.mapping: |-
     *.LOAD,DVL.TEAM.LOADLIB
     *.CICSLOAD,DAT.CICS.LOAD
