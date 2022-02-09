@@ -1,5 +1,5 @@
        ID DIVISION.
-       PROGRAM-ID. DATAXCICS.
+       PROGRAM-ID. DATXCICS.
       *
       * a dup of datbatc. Dont ask Not really cics
        ENVIRONMENT DIVISION.
