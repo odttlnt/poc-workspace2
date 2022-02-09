@@ -1,17 +1,19 @@
-## IBM SAMPLE:  Target deploy properties for DVL (SAMPLE)
+# IBM SAMPLE:  Deployment Properties for a Target LPAR
 ## Put this in the apps repo under applicaiton-conf/folder
-## Demo only shows how pds.pammping work with Az Process
-## Also this demo only support one env
 ---
 deploy:
-  cics.cicsplex: DCICS????
+  cics.cicsplex: tvt6031.svl.ibm.com
   cics.cmciport: 1490
-  bind.maxrc: 0
-  bind.confdir: /u/?/ispf
-  bind.user: JENKINS
-  bind.package: GENASA1????
-  bind.qualifier: GENADB0????
-  bind.subsys: DBC1????
+  bind.maxrc: 4
+  bind.confdir: /u/myhome??/ispf
+  bind.user: DBA_USER?
+  bind.package: App_collection_name?
+  bind.qualifier: AppDB2Qual?
+  bind.subsys: DB2_SSID?
+
+# Maps original file LLQ  to a new or existing target PDS for copy
   pds.mapping: |-
     *.LOAD,DVL.TEAM.LOADLIB
+    *.CICSLOAD,DAT.CICS.LOAD
     *.DBRM,DVL.TEAM.DBRM
+    *.JCL,DVL.TEAM.JCL

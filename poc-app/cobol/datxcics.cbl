@@ -1,6 +1,7 @@
        ID DIVISION.
        PROGRAM-ID. DATXCICS.
-      *    THIS DEMONSTRATES Impact build with aCICS/BMS
+      *    THIS DEMONSTRATES Impact build with CICS/BMS
+      * Tran DAT0 in rpl NLOPEZ.IDZ.LOAD
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
        DATA DIVISION.
