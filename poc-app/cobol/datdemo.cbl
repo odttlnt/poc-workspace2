@@ -1,7 +1,7 @@
        ID DIVISION.
        PROGRAM-ID. DATDEMO.
       *    THIS DEMONSTRATES Impact build with CICS/BMS
-      * Tran DAT0 in rpl NLOPEZ.IDZ.LOAD  v2
+      * Tran DAT0 in rpl NLOPEZ.IDZ.LOAD  v4.1
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
        DATA DIVISION.
@@ -10,11 +10,11 @@
       *    COPY DFHAID.
       *
       * My test map
-           COPY DATMAP.
+           COPY DATMAPM.
        PROCEDURE DIVISION.
            DISPLAY 'Sending a test map'.
            EXEC CICS
-                SEND MAP ('DATMAP')
+                SEND MAP ('DATMAPM')
                      MAPSET('DATMLIS')
                      FROM(DATMLISO)
            END-EXEC.
