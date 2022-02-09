@@ -15,5 +15,6 @@ deploy:
   pds.mapping: |-
     *.LOAD,DVL.TEAM.LOADLIB
     *.CICSLOAD,DAT.CICS.LOAD
+    *.BMS,DAT.CICS.LOAD
     *.DBRM,DVL.TEAM.DBRM
     *.JCL,DVL.TEAM.JCL
