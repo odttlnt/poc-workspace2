@@ -2,7 +2,7 @@ DATMAPM  DFHMSD TYPE=&SYSPARM,MODE=INOUT,LANG=COBOL,                   X
                STORAGE=AUTO,TIOAPFX=YES,DSATTS=(COLOR,HILIGHT),        X
                MAPATTS=(COLOR,HILIGHT)
 DATMLIS  DFHMDI SIZE=(24,80),CTRL=(PRINT,FREEKB)
-         DFHMDF POS=(1,24),LENGTH=32,INITIAL='Nelsons Map v5.5',       X
+         DFHMDF POS=(1,24),LENGTH=32,INITIAL='Nelsons Map v5.6',       X
                ATTRB=(ASKIP,BRT)
          DFHMDF POS=(4,18),LENGTH=32,                                  X
                INITIAL='Test This BMS Build in DBB',                   X
