@@ -14,8 +14,8 @@
        PROCEDURE DIVISION.
            DISPLAY 'Sending a test map'.
            EXEC CICS
-                SEND MAP ('DATMAPM')
-                     MAPSET('DATMLIS')
+                SEND MAP ('DATMLIS')
+                     MAPSET('DATMAPM')
                      FROM(DATMLISO)
            END-EXEC.
       *
