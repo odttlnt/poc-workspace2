@@ -1,4 +1,4 @@
 *.md
 
-# njl added this to avoid vscode addition of local logs after a User Build
-logs/**
+# njl added this to avoid vscode addition of local logs after a User Build - testing
+**/logs
