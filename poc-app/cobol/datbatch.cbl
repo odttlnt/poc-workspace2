@@ -1,5 +1,5 @@
        ID DIVISION.
-       PROGRAM-ID. DATDEMO.
+       PROGRAM-ID. DATBATCH.
       *
       * Simple demo code (NLopez) on local zDT v2.f
       * Use Pub GITHUB project's DEVELOP branch
@@ -16,7 +16,7 @@
       * COPY DATSHARE.
       *
        PROCEDURE DIVISION.
-           DISPLAY 'DATDEMO here- v1.2209'.
+           DISPLAY 'DATBATCH here- v1.2209'.
       *
       *========= display copybook literals
       *     DISPLAY 'CPYBK=DATDEPND -> ' WS-VER.
@@ -30,7 +30,7 @@
                 END-IF
            END-PERFORM.
       *========== static call example
-           CALL 'DATSUB'.
+      *     CALL 'DATSUB'.
            STOP RUN.
       *==========
        dump_num1.

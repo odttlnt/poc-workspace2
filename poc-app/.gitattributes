@@ -1,6 +1,6 @@
-**/**.pdf binary 
+**.pdf binary 
 **.docx binary 
-**/**.tar binary 
-**/**.mp3 binary 
+**.tar binary 
+**.mp3 binary 
 
 ** zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
