@@ -4,7 +4,7 @@
       *
       * cics IS 3270 session zdt_cics ON T6031
       * enter 'D tvt6031' no userid/pass then 'logon applid(CICS01)'
-      * Tran is 'DAT0' in rpl NLOPEZ.IDZ.LOAD  v4.3
+      * Tran is 'DAT0' in rpl NLOPEZ.IDZ.LOAD  v4.4
       * zapp is placed in my tmp by the pipeline process
       *
        ENVIRONMENT DIVISION.
