@@ -17,7 +17,7 @@
       * My test with my pre-built map 
            COPY DATMAPM.
        PROCEDURE DIVISION.
-           DISPLAY 'Sending a test map'.
+           DISPLAY 'Sending a test map  NEL'.
            EXEC CICS
                 SEND MAP ('DATMLIS')
                      MAPSET('DATMAPM')
