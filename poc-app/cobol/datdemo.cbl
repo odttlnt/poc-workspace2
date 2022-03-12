@@ -2,11 +2,11 @@
        PROGRAM-ID. DATDEMO.
       *    THIS DEMONSTRATES Impact build with CICS/BMS
       *
-      * cics IS 3270 session zdt_cics ON T6031
-      * enter 'D tvt6031' no userid/pass then 'logon applid(CICS01)'
-      * Tran is 'DAT0' in rpl NLOPEZ.IDZ.LOAD  v4.6
-      * zapp is placed in my tmp by the pipeline process
-      *
+      * region is cicsts56  on my zdt_cics vtam session 
+      * wip - cmci for zDT
+      * Tran ='DAT0' in rpl NLOPEZ.IDZ.LOAD 
+      * zapp is cloned to my tmp by the pipeline process
+      * displays are in cics stc sysout 
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
        DATA DIVISION.
@@ -17,7 +17,7 @@
       * My test with my pre-built map 
            COPY DATMAPM.
        PROCEDURE DIVISION.
-           DISPLAY 'Sending a test map  NEL'.
+           DISPLAY 'Sending a test map  NEL 11:12'.
            EXEC CICS
                 SEND MAP ('DATMLIS')
                      MAPSET('DATMAPM')
