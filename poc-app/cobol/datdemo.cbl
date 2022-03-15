@@ -24,5 +24,7 @@
                      FROM(DATMLISO)
            END-EXEC.
       *
+      *  this sub is a dual mod for datbatch and datdemo
+      * 
            CALL 'DATSUB'.
            STOP RUN.
