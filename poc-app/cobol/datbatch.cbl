@@ -1,7 +1,7 @@
        ID DIVISION.
        PROGRAM-ID. DATBATCH.
       *
-      * Simple demo code (NLopez) on local zDT v2.f
+      * Simple demo code (NLopez) on local zDT v2.G
       * Use Pub GITHUB project's DEVELOP branch
       * References COMMON Copybook  DATSHARE
        ENVIRONMENT DIVISION.
