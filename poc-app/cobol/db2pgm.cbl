@@ -11,6 +11,6 @@
                FROM  Q.org
                WHERE DEPTNUMB = 15
            END-EXEC.
-           DISPLAY 'db2pgm v6.3'. 
+           DISPLAY 'db2pgm v6.4'. 
            DISPLAY 'Selected  Dept 10 from Org value=' DEPTNAME-TEXT.
            STOP RUN.
