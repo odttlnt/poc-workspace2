@@ -1,11 +1,11 @@
        ID DIVISION.
        PROGRAM-ID. DATBATCH.
       *
-      * Simple demo code (NLopez) on local zDT v6.5
+      * Simple demo code (NLopez) on local zDT v6.6
       * Use Pub GITHUB project's DEVELOP branch
       * References COMMON Copybook  DATSHARE
        ENVIRONMENT DIVISION.
-       DATA DIVISION.
+       DATA DIVISION.n
        WORKING-STORAGE SECTION.
        01 WK-AREA1.
           05  FILLER       PIC X(80).
