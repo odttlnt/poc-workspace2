@@ -5,7 +5,7 @@
       * Use Pub GITHUB project's DEVELOP branch
       * References COMMON Copybook  DATSHARE
        ENVIRONMENT DIVISION.
-       DATA DIVISION.n
+       DATA DIVISION.
        WORKING-STORAGE SECTION.
        01 WK-AREA1.
           05  FILLER       PIC X(80).
