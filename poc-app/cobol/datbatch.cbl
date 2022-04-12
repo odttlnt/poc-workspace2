@@ -4,7 +4,7 @@
       * Simple demo code (NLopez) on local zDT v6.8
       * Use Pub GITHUB project's DEVELOP branch
       * References COMMON Copybook  DATSHARE
-      * v 11:27
+      * v 12:06
        ENVIRONMENT DIVISION.
        DATA DIVISION.
        WORKING-STORAGE SECTION.
