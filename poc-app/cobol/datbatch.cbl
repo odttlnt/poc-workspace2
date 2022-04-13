@@ -4,7 +4,6 @@
       * Simple demo code (NLopez) on local zDT v6.8
       * Use Pub GITHUB project's DEVELOP branch
       * References COMMON Copybook  DATSHARE
-      * v 4:53
        ENVIRONMENT DIVISION.
        DATA DIVISION.
        WORKING-STORAGE SECTION.
@@ -17,7 +16,7 @@
       * COPY DATSHARE.
       *
        PROCEDURE DIVISION.
-           DISPLAY 'DATBATCH here- v6.2'.
+           DISPLAY 'DATBATCH here- v9:32'.
       *
       *========= display copybook literals
       *     DISPLAY 'CPYBK=DATDEPND -> ' WS-VER.
