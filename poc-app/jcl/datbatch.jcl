@@ -4,7 +4,7 @@
 //*
 //DBB     EXEC PGM=DATBATCH
 //*STEPLIB  DD  DISP=SHR,DSN=DEV.BATCH.LOAD     pipline Loadlib
-//STEPLIB  DD  DISP=SHR,DSN=IBMUSER.IDZ.LOAD   IDz Loadlib
+//STEPLIB  DD  DISP=SHR,DSN=NLOPEZ.IDZ.LOAD   IDz Loadlib
 //SYSPRINT DD SYSOUT=*
 //SYSOUT   DD SYSOUT=*
 //**********************************************************
