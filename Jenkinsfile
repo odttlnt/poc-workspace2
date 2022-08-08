@@ -15,14 +15,13 @@ pipeline {
     stages {
         stage('clone') {
             steps {
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: '*/develop']],
-                    userRemoteConfigs: [[url: 'git@github.com:nlopez1-ibm/poc-workspace.git' ]]
-                ])
-            }  
+                println '** Init Step: Setting up a Git Env with HTTPS Credentials stored in Jenkins'
+                // Get this job's repo, parse it to derive Git ID and DOM (can support many repos)
+                script {sh "git -c http.sslVerify=false clone 'git@github.com:nlopez1-ibm/poc-workspace.git'" }  
+            }          
         }  
-        
+
+
         stage('Build') {
             steps {
                   println  '** Building..'
