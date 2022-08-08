@@ -11,7 +11,7 @@ def zAppBuild   = "/u/ibmuser/waziDBB/dbb-zappbuild/build.groovy"
 pipeline {
     // point to the USS Agent and skip Git auto-checkout. 
     agent  { node { label zAgent }}
-    // options { skipDefaultCheckout(true) }
+    options { skipDefaultCheckout(true) }
     stages {
         stage('clone') {
             steps {
