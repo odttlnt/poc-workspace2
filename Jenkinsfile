@@ -4,7 +4,6 @@
 
 // Define some basic variables
 def zAgent      = 'myWazi_Agent'
-def myJenkinsID = 'ibmuser'             // My Jenkins ID that points to my Git USERNAME
 def myApp       = 'poc-app'
 def zAppBuild   = "/u/ibmuser/waziDBB/dbb-zappbuild/build.groovy"
 
@@ -19,7 +18,7 @@ pipeline {
                 checkout([
                     $class: 'GitSCM',
                     branches: [[name: '*/develop']],
-                    userRemoteConfigs: [[url: 'https://github.com/nlopez1-ibm/poc-workspace.git' ]]
+                    userRemoteConfigs: [[url: 'git@github.com:nlopez1-ibm/poc-workspace.git' ]]
                 ])
             }  
         }  
@@ -28,14 +27,8 @@ pipeline {
             steps {
                   println  '** Building..'
                   sh "ls  "
-                  sh "groovyz " + zAppBuild + " -w " + env.wkDir + " -a " + myApp + " -o dbb-logs -h " + env.USER + "poc-app/cobol/datbatch.cbl"
+        //          sh "groovyz " + zAppBuild + " -w " + env.wkDir + " -a " + myApp + " -o dbb-logs -h " + env.USER + "poc-app/cobol/datbatch.cbl"
             }
-        }
-
-        stage('Test') {
-            steps {
-                  println  '** NOP - Testing..'
-            }
-        }
+        }        
     }    
 }
