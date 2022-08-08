@@ -11,13 +11,16 @@ def zAppBuild   = "/u/ibmuser/waziDBB/dbb-zappbuild/build.groovy"
 
 pipeline {
     // point to the USS Agent and skip Git auto-checkout. 
-    agent  { label zAgent }
+    agent  { node { label zAgent }}
     options { skipDefaultCheckout(true) }
     stages {
         stage('clone') {
             steps {
-                println '** Init Step: Setting up a Git Env for ssh ' 
-                script { sh "git -c http.sslVerify=false clone ${scm.getUserRemoteConfigs()[0].getUrl()}" }  
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/dev*']],
+                    userRemoteConfigs: [[url: 'https://github.com/nlopez1-ibm/poc-workspace.git' ]]
+                ])
             }  
         }  
         
