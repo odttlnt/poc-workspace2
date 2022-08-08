@@ -14,7 +14,7 @@ pipeline {
     agent  { label zAgent }
     options { skipDefaultCheckout(true) }
     stages {
-        stage('init') {
+        stage('clone') {
             steps {
                 println '** Init Step: Setting up a Git Env for ssh ' 
                 script { sh "git -c http.sslVerify=false clone ${scm.getUserRemoteConfigs()[0].getUrl()}" }  
