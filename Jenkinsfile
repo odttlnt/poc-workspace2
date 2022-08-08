@@ -17,7 +17,7 @@ pipeline {
             steps {
                 checkout([
                     $class: 'GitSCM',
-                    branches: [[name: '**']],
+                    branches: [[name: '*/develop']],
                     userRemoteConfigs: [[url: 'git@github.com:nlopez1-ibm/poc-workspace.git' ]]
                 ])
             }  
