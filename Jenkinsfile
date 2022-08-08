@@ -13,7 +13,7 @@ pipeline {
     agent  { label zAgent }
     options { skipDefaultCheckout(true) }
     stages {
-        stage('clone') {
+        stage('Clone') {
             steps {
                 println '** Init Step: Setting up a Git Env with SSH from USS'   
                 sh "ls ; pwd ; + echo " + env.BRANCH_NAME 
@@ -22,11 +22,17 @@ pipeline {
         }  
 
 
-        stage('Build') {
+        stage('DBB Build') {
             steps {
                   println  '** Building..'
                   sh "ls  "
         //          sh "groovyz " + "/u/ibmuser/waziDBB/dbb-zappbuild/build.groovy" + " -w " + env.wkDir + " -a " + myApp + " -o dbb-logs -h " + env.USER + "poc-app/cobol/datbatch.cbl"
+            }
+        }        
+
+        stage('Publist ') {
+            steps {
+                  println  '** WIP ...'                  
             }
         }        
     }    
