@@ -17,7 +17,7 @@ pipeline {
             steps {
                 println '** Init Step: Setting up a Git Env with SSH from USS'   
                 sh "ls  " 
-                sh "/u/ibmuser/waziDBB/dbb-zappbuild/scripts/CI/Clone.sh " +  env.wkDir + myApp + " git@github.com:nlopez1-ibm/poc-workspace.git"
+                sh "/u/ibmuser/waziDBB/dbb-zappbuild/scripts/CI/Clone.sh " +  env.WORKSPACE + " " +  myApp + " git@github.com:nlopez1-ibm/poc-workspace.git"
             }          
         }  
 
