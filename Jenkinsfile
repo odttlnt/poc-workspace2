@@ -6,7 +6,7 @@
 def zAgent      = 'myWazi_Agent'
 def myApp       = 'poc-app'
 def zAppBuild   = "/u/ibmuser/waziDBB/dbb-zappbuild/build.groovy"
-/u/ibmuser/waziDBB/dbb-zappbuild/scripts/CI/Clone.sh
+
 
 pipeline {
     // point to the USS Agent and skip Git auto-checkout. 
@@ -16,8 +16,7 @@ pipeline {
         stage('clone') {
             steps {
                 println '** Init Step: Setting up a Git Env with SSH from USS'    
-                script {sh zAppBuild+"/scripts/CI/Clone.sh" +  env.wkDir + myApp + 'git@github.com:nlopez1-ibm/poc-workspace.git'" }  
-                
+                script {sh zAppBuild+"/scripts/CI/Clone.sh" +  env.wkDir + myApp + 'git@github.com:nlopez1-ibm/poc-workspace.git'" }                  
             }          
         }  
 
