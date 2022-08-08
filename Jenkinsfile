@@ -16,7 +16,7 @@ pipeline {
         stage('clone') {
             steps {
                 println '** Init Step: Setting up a Git Env with SSH from USS'    
-                script {sh zAppBuild+"/scripts/CI/Clone.sh" +  env.wkDir + myApp + "git@github.com:nlopez1-ibm/poc-workspace.git" }                  
+                script {sh "/u/ibmuser/waziDBB/dbb-zappbuild/scripts/CI/Clone.sh" +  env.wkDir + myApp + "git@github.com:nlopez1-ibm/poc-workspace.git" }                  
             }          
         }  
 
@@ -25,7 +25,7 @@ pipeline {
             steps {
                   println  '** Building..'
                   sh "ls  "
-        //          sh "groovyz " + zAppBuild + " -w " + env.wkDir + " -a " + myApp + " -o dbb-logs -h " + env.USER + "poc-app/cobol/datbatch.cbl"
+        //          sh "groovyz " + "/u/ibmuser/waziDBB/dbb-zappbuild/build.groovy" + " -w " + env.wkDir + " -a " + myApp + " -o dbb-logs -h " + env.USER + "poc-app/cobol/datbatch.cbl"
             }
         }        
     }    
