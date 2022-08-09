@@ -1,5 +1,6 @@
 // Sample Jenkinsfile for testing (Nlopez) using ssh and a minimal Agent Setup
 // Running ssh over mywazi  (sin eVpN)
+// Bug in Jenkins gi api limit I have 60 and Jenk doesnt see it and holds the pipe
 
 def zAgent      = 'myWazi_Agent'
 def myApp       = 'poc-app'
@@ -15,7 +16,7 @@ pipeline {
             steps {
                 println '** Cloning with SSH ...'   
                 sh "pwd "
-                sh "rm -r " env.WORKSPACE+"/*" 
+                sh "rm -r " + env.WORKSPACE+"/*" 
                 sh "/u/ibmuser/waziDBB/dbb-zappbuild/scripts/CI/Clone.sh " +  env.WORKSPACE + " " +  myApp + " git@github.com:nlopez1-ibm/poc-workspace.git " + env.BRANCH_NAME 
             }          
         }  
