@@ -3,6 +3,7 @@
 
 def zAgent      = 'myWazi_Agent'
 def myApp       = 'poc-app'
+def myHLQ       = 'IBMUSER.JENKINS'
 def zAppBuild   = "/u/ibmuser/waziDBB/dbb-zappbuild/build.groovy"
 
 pipeline {
@@ -22,7 +23,7 @@ pipeline {
         stage('DBB Build') {
             steps {
                   println  '** Building with DBB ...'
-                  sh "groovyz " + "/u/ibmuser/waziDBB/dbb-zappbuild/build.groovy" + " -w " + env.WORKSPACE+"/poc-workspace" " -a " + myApp + " -o dbb-logs -h IBMUSER.JENKINS   poc-app/cobol/datbatch.cbl"
+                  sh "groovyz " + "/u/ibmuser/waziDBB/dbb-zappbuild/build.groovy" + " -w " + env.WORKSPACE+"/poc-workspace" " -a " + myApp + " -o dbb-logs -h " myHLQ + " poc-app/cobol/datbatch.cbl"
             }
         }        
 
