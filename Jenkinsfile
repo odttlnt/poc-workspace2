@@ -14,8 +14,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                println '** Cloning with SSH ...'   
-                sh "pwd "
+                println '** Cloning with SSH ...'             
                 sh "rm -r " + env.WORKSPACE+"/*" 
                 sh "/u/ibmuser/waziDBB/dbb-zappbuild/scripts/CI/Clone.sh " +  env.WORKSPACE + " " +  myApp + " git@github.com:nlopez1-ibm/poc-workspace.git " + env.BRANCH_NAME 
             }          
@@ -24,7 +23,7 @@ pipeline {
         stage('DBB Build') {
             steps {
                   println  '** Building with DBB ...'
-                  sh 'groovyz2 /u/ibmuser/waziDBB/dbb-zappbuild/build.groovy   -w ' + env.WORKSPACE+'/poc-workspace -a ' + myApp + ' -o dbb-logs -h IBMUSER  poc-app/cobol/datbatch.cbl'
+                  sh '. ./.profile ; groovyz2 /u/ibmuser/waziDBB/dbb-zappbuild/build.groovy   -w ' + env.WORKSPACE+'/poc-workspace -a ' + myApp + ' -o dbb-logs -h IBMUSER  poc-app/cobol/datbatch.cbl'
             }
         }        
 
