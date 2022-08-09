@@ -1,5 +1,5 @@
 // Sample Jenkinsfile for testing (Nlopez) using ssh and a minimal Agent Setup
-// Running ssh over mywazi 
+// Running ssh over mywazi  (sin eVpN)
 
 def zAgent      = 'myWazi_Agent'
 def myApp       = 'poc-app'
@@ -14,8 +14,8 @@ pipeline {
         stage('Clone') {
             steps {
                 println '** Cloning with SSH ...'   
-            //    sh "pwd "
-            //    sh "env"
+                sh "pwd "
+                sh "env"
                 sh "/u/ibmuser/waziDBB/dbb-zappbuild/scripts/CI/Clone.sh " +  env.WORKSPACE + " " +  myApp + " git@github.com:nlopez1-ibm/poc-workspace.git " + env.BRANCH_NAME 
             }          
         }  
@@ -23,7 +23,7 @@ pipeline {
         stage('DBB Build') {
             steps {
                   println  '** Building with DBB ...'
-                 // sh 'groovyz /u/ibmuser/waziDBB/dbb-zappbuild/build.groovy   -w ' + env.WORKSPACE+'/poc-workspace -a ' + myApp + ' -o dbb-logs -h IBMUSER  poc-app/cobol/datbatch.cbl'
+                  sh 'groovyz /u/ibmuser/waziDBB/dbb-zappbuild/build.groovy   -w ' + env.WORKSPACE+'/poc-workspace -a ' + myApp + ' -o dbb-logs -h IBMUSER  poc-app/cobol/datbatch.cbl'
             }
         }        
 
