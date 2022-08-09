@@ -26,7 +26,7 @@ pipeline {
             steps {
                   println  '** Building..'
                   sh "ls  "
-        //          sh "groovyz " + "/u/ibmuser/waziDBB/dbb-zappbuild/build.groovy" + " -w " + env.wkDir + " -a " + myApp + " -o dbb-logs -h " + env.USER + "poc-app/cobol/datbatch.cbl"
+                  sh "groovyz " + "/u/ibmuser/waziDBB/dbb-zappbuild/build.groovy" + " -w " + env.WORKSPACE+"/poc-workspace" " -a " + myApp + " -o dbb-logs -h " + env.USER + "poc-app/cobol/datbatch.cbl"
             }
         }        
 
