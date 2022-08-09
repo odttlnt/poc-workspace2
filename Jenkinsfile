@@ -23,7 +23,7 @@ pipeline {
         stage('DBB Build') {
             steps {
                   println  '** Building with DBB ...'
-                  sh '/u/ibmuser/waziDBB/dbb-zappbuild/scripts/CI/Build.sh ' + env.WORKSPACE + ' poc-workspace  ' + myApp + 'poc-app/cobol/datbatch.cbl'
+                  sh '/u/ibmuser/waziDBB/dbb-zappbuild/scripts/CI/Build.sh ' + env.WORKSPACE + ' poc-workspace  ' + myApp + ' poc-app/cobol/datbatch.cbl'
             }
         }        
 
