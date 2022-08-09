@@ -24,7 +24,7 @@ pipeline {
         stage('DBB Build') {
             steps {
                   println  '** Building with DBB ...'
-                  sh 'groovyz /u/ibmuser/waziDBB/dbb-zappbuild/build.groovy   -w ' + env.WORKSPACE+'/poc-workspace -a ' + myApp + ' -o dbb-logs -h IBMUSER  poc-app/cobol/datbatch.cbl'
+                  sh 'groovyz2 /u/ibmuser/waziDBB/dbb-zappbuild/build.groovy   -w ' + env.WORKSPACE+'/poc-workspace -a ' + myApp + ' -o dbb-logs -h IBMUSER  poc-app/cobol/datbatch.cbl'
             }
         }        
 
