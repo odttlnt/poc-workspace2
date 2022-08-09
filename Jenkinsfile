@@ -15,7 +15,7 @@ pipeline {
             steps {
                 println '** Cloning with SSH ...'   
                 sh "pwd "
-                sh "env"
+                sh "rm -r " env.WORKSPACE+"/*" 
                 sh "/u/ibmuser/waziDBB/dbb-zappbuild/scripts/CI/Clone.sh " +  env.WORKSPACE + " " +  myApp + " git@github.com:nlopez1-ibm/poc-workspace.git " + env.BRANCH_NAME 
             }          
         }  
