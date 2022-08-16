@@ -28,6 +28,15 @@ pipeline {
                   // sh '/u/ibmuser/waziDBB/dbb-zappbuild/scripts/CI/Build.sh ' + env.WORKSPACE + ' poc-workspace  ' + myApp + ' poc-app/cobol/datbatch.cbl'
                   sh "/u/nlopez/tmp/dbb-zappbuild/scripts/CI/Build.sh " + env.WORKSPACE + ' poc-workspace  ' + myApp + ' poc-app/cobol/datbatch.cbl'
             }
+        }             
+
+         stage('Publish') {
+            steps {
+                  println  '** Packaging artifacts and Publishing to UCD Code Station ...'
+                  // sh '/u/ibmuser/waziDBB/dbb-zappbuild/scripts/CI/Build.sh ' + env.WORKSPACE + ' poc-workspace  ' + myApp + ' poc-app/cobol/datbatch.cbl'
+                  //sh "/u/nlopez/tmp/dbb-zappbuild/scripts/CI/Build.sh " + env.WORKSPACE + ' poc-workspace  ' + myApp + ' poc-app/cobol/datbatch.cbl'
+                  sh "/u/nlopez/tmp/dbb-zappbuild/scripts/CD/UCD_Pub.sh " + env.BUILD_ID + " " + env.WORKSPACE+'/poc-workspace  '
+            }
         }                
     }    
 }
