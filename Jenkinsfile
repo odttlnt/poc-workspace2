@@ -10,21 +10,21 @@ pipeline {
         stage('Clone') {
             steps {
                 println '** Cloning on USS ...'                             
-                //sh 'rm -r ' + env.WORKSPACE+'/* >/dev/null 2>&1 ; ' + scripts+'/CI/Clone.sh ' +  env.WORKSPACE + ' ' +  myApp + ' git@github.com:nlopez1-ibm/poc-workspace.git ' + env.BRANCH_NAME 
+                sh 'rm -r ' + env.WORKSPACE+'/* >/dev/null 2>&1 ; ' + scripts+'/CI/Clone.sh ' +  env.WORKSPACE + ' ' +  myApp + ' git@github.com:nlopez1-ibm/poc-workspace.git ' + env.BRANCH_NAME 
             }          
         }  
 
         stage('Build') {
             steps {
-                  println  '** Building feature with DBB ...'                  
-                  //sh scripts+'/CI/Build.sh ' + env.WORKSPACE + ' poc-workspace  ' + myApp + ' poc-app/cobol/datbatch.cbl'
+                println  '** Building feature with DBB ...'                  
+                //sh scripts+'/CI/Build.sh ' + env.WORKSPACE + ' poc-workspace  ' + myApp + ' poc-app/cobol/datbatch.cbl'
             }
         }             
 
         stage('Publish') {
             steps {
-                  println  '** Packaging artifacts and Publishing to UCD Code Station ...'
-                  //sh scripts+'/CD/UCD_Pub.sh ' + env.BUILD_ID + ' ' + env.WORKSPACE+'/poc-workspace  '
+                println  '** Packaging artifacts and Publishing to UCD Code Station ...'
+                //sh scripts+'/CD/UCD_Pub.sh ' + env.BUILD_ID + ' ' + env.WORKSPACE+'/poc-workspace  '
             }
         }                
     }    
