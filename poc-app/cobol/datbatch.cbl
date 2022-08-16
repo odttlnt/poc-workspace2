@@ -16,7 +16,7 @@
       * COPY DATSHARE.
       *
        PROCEDURE DIVISION.
-           DISPLAY 'DATBATCH here- Wazi test 1:43'.
+           DISPLAY 'DATBATCH here- Wazi nelson'.
       *
       *========= display copybook literals
       *     DISPLAY 'CPYBK=DATDEPND -> ' WS-VER.

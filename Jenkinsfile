@@ -4,7 +4,7 @@
 //   Then he Pushes his work to trigger an existing CI/CD flow (on-perm off or hybrid).
 // ** With this model you dont need Jenkins.. so this script is not needed . but nice to have 
 
-def zAgent      = 'myWazi_Agent'
+def zAgent      = 'myZDT_Agent'
 def myApp       = 'poc-app'
 
 pipeline {
