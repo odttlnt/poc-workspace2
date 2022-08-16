@@ -20,7 +20,7 @@ pipeline {
             }
         }             
 
-         stage('Publish') {
+        stage('Publish') {
             steps {
                   println  '** Packaging artifacts and Publishing to UCD Code Station ...'
                   sh "/u/nlopez/tmp/dbb-zappbuild/scripts/CD/UCD_Pub.sh " + env.BUILD_ID + " " + env.WORKSPACE+'/poc-workspace  '
