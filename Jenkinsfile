@@ -16,7 +16,7 @@ pipeline {
         stage('Clone') {
             steps {
                 println '** Cloning on USS ...'             
-                sh "rm -r " + env.WORKSPACE+"/* >/dev/null 2>&1"
+                sh 'rm -r ' + env.WORKSPACE+'/* >/dev/null 2>&1'
                 //sh "/u/ibmuser/waziDBB/dbb-zappbuild/scripts/CI/Clone.sh " +  env.WORKSPACE + " " +  myApp + " git@github.com:nlopez1-ibm/poc-workspace.git " + env.BRANCH_NAME 
                 sh "/u/nlopez/tmp/dbb-zappbuild/scripts/CI/Clone.sh " +  env.WORKSPACE + " " +  myApp + " git@github.com:nlopez1-ibm/poc-workspace.git " + env.BRANCH_NAME 
             }          
