@@ -1,4 +1,5 @@
 // Sample Jenkinsfile using ssh and a zDT Agent (Nlopez)
+// for help: https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
 def myApp       = 'poc-app'
 scripts         = '/u/nlopez/tmp/dbb-zappbuild/scripts'
 
