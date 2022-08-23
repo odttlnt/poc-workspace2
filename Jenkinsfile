@@ -26,7 +26,7 @@ pipeline {
         stage('Publish') {
             steps {
                 println  '** Packaging artifacts and Publishing to UCD Code Station ...'
-                //sh scripts+'/CD/UCD_Pub.sh ' + env.BUILD_ID + ' ' + env.WORKSPACE+'/poc-workspace  '
+                sh scripts+'/CD/UCD_Pub.sh ' + env.BUILD_ID + ' ' + env.WORKSPACE+'/poc-workspace  '
             }
         }                
     }    
