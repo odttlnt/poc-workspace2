@@ -19,7 +19,7 @@ pipeline {
         stage('Build') {
             steps {
                 println  '** Building feature with DBB ...'                  
-                sh scripts+'/CI/Build.sh ' + env.WORKSPACE + ' poc-workspace  ' + myApp + ' poc-app/cobol/datbatch.cbl'
+                sh scripts+'/CI/Build.sh ' + env.WORKSPACE + ' poc-workspace  ' + myApp + ' --userBuild poc-app/cobol/datbatch.cbl'
             }
         }             
 
