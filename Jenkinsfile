@@ -5,7 +5,7 @@ scripts         = '/u/nlopez/tmp/dbb-zappbuild/scripts'
 
 pipeline {
     //agent  { label 'myZOS-Agent' }
-    agent  { label 'myWazi-Agent' }
+    agent  { label 'myWazi-agent' }
     options { skipDefaultCheckout(true) }
 
     stages {
