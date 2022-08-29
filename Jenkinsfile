@@ -4,7 +4,8 @@ def myApp       = 'poc-app'
 scripts         = '/u/nlopez/tmp/dbb-zappbuild/scripts'
 
 pipeline {
-    agent  { label 'myZOS-Agent' }
+    //agent  { label 'myZOS-Agent' }
+    agent  { label 'myWazi-Agent' }
     options { skipDefaultCheckout(true) }
 
     stages {
