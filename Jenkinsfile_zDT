@@ -11,7 +11,7 @@ def appworkspace = 'poc-workspace'
 def appname = 'poc-app'
 
 def ucdPublish ='/u/nlopez/tmp/dbb-zappbuild/scripts/UCD/dbb-ucd-packaging.groovy' 
-def buztool  = '/u/nlopez/ucd-agent/bin/buztool.sh'
+def buzTool  = '/u/nlopez/ucd-agent/bin/buztool.sh'
 def ucdComponent = 'poc-app'
 
 // no changes required to this section 
