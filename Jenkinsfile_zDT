@@ -28,9 +28,8 @@ pipeline {
         stage('Build') {
             steps {
                 println  '** Building one pgm with DBB ...'                  
-                sh 'groovyz ' + dbbbuild + ' -w ' + env.wkDir + ' -a ' + app_name + " -o dbb-logs -h ' + env.USER + ' poc-app/cobol/datbatch'
+                sh 'groovyz ' + dbbbuild + ' -w ' + env.wkDir + ' -a ' + app_name + ' -o dbb-logs -h ' + env.USER + ' poc-app/cobol/datbatch'
             }
-        }             
-           
+        }                        
     }    
 }
