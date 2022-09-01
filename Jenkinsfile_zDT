@@ -5,7 +5,7 @@
 // change these values to match your configuration
 def dbbbuild ='/u/nlopez/tmp/dbb-zappbuild/build.groovy'
 def repo = 'git@github.com:nlopez1-ibm/poc-workspace.git'
-//def app_workspace = 'poc-workspace'
+def app_workspace = 'poc-workspace'
 def app_name = 'poc-app'
 def myAgent  = 'myZOS-Agent'
 
@@ -21,7 +21,7 @@ pipeline {
                 script {
                     sh 'rm -rf *'
                     sh 'git clone ' + repo 
-                    sh 'cd poc-workspace ; git log --graph --oneline --decorate -n 3'
+                    sh 'cd ' + app-workspace '; git log --graph --oneline --decorate -n 3'
                 }
             }          
         }  
@@ -30,7 +30,7 @@ pipeline {
             steps {
                 println  '** Building one pgm with DBB ...'                  
                 script {
-                    sh 'groovyz ' + dbbbuild + ' -w ' + env.wkDir + ' -a ' + app_name + ' -o dbb-logs -h ' + env.USER + ' poc-app/cobol/datbatch'
+                    sh 'groovyz ' + dbbbuild + ' -w ' + app-workspace + ' -a ' + app_name + ' -o dbb-logs -h ' + env.USER + ' poc-app/cobol/datbatch'
                 }
             }
         }                        
