@@ -5,8 +5,8 @@
 // change these values to match your configuration
 def dbbbuild ='/u/nlopez/tmp/dbb-zappbuild/build.groovy'
 def repo = 'git@github.com:nlopez1-ibm/poc-workspace.git'
-def app_workspace = 'poc-workspace'
-def app_name = 'poc-app'
+def app-workspace = 'poc-workspace'
+def app-name = 'poc-app'
 def myAgent  = 'myZOS-Agent'
 
 
