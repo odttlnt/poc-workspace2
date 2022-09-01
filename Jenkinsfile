@@ -1,13 +1,13 @@
 // Sample Jenkinsfile using ssh and a zDT Agent (Nlopez)
 // for help: https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
-// tried build on wazi and cd on zDT - need new pack/pub script --- defer. Stcik with zDT env
+// working between zDT and wazi. use wazi for faster CI Demo. Use zDT for e2e - but slower
 def myApp       = 'poc-app'
-scripts         = '/u/nlopez/tmp/dbb-zappbuild/scripts'
-//scripts         = '/u/nlopez/waziDBB/dbb-zappbuild/scripts'
+//scripts         = '/u/nlopez/tmp/dbb-zappbuild/scripts'
+scripts         = '/u/nlopez/waziDBB/dbb-zappbuild/scripts'
 
 pipeline {
-    agent  { label 'myZOS-Agent' }
-    //agent  { label 'myWazi-agent' }
+    //agent  { label 'myZOS-Agent' }
+    agent  { label 'myWazi-agent' }
     options { skipDefaultCheckout(true) }
 
     stages {
@@ -15,24 +15,25 @@ pipeline {
             steps {
                 println '** Cloning on USS ...'                             
                 //sh 'rm -r ' + env.WORKSPACE+'/* >/dev/null 2>&1 ; ' + scripts+'/CI/Clone2.sh ' +  env.WORKSPACE + ' ' +  myApp + ' git@github.com:nlopez1-ibm/poc-workspace.git ' + env.BRANCH_NAME 
-                sh scripts+'/CI/Clone2.sh ' +  env.WORKSPACE + '  poc-workspace  git@github.com:nlopez1-ibm/poc-workspace.git ' + env.BRANCH_NAME 
+                //sh scripts+'/CI/Clone2.sh ' +  env.WORKSPACE + '  poc-workspace  git@github.com:nlopez1-ibm/poc-workspace.git ' + env.BRANCH_NAME 
+                sh 'git -version'
             }          
         }  
 
         stage('Build') {
             steps {
-                println  '** Building feature with DBB ...'                  
-                sh scripts+'/CI/Build.sh ' + env.WORKSPACE + ' poc-workspace  ' + myApp + ' --userBuild poc-app/cobol/datbatch.cbl'
+                println  '** SKIP    Building feature with DBB ...'                  
+                //sh scripts+'/CI/Build.sh ' + env.WORKSPACE + ' poc-workspace  ' + myApp + ' --userBuild poc-app/cobol/datbatch.cbl'
             }
         }             
 
 
-        stage('Package') {
-            steps {
-                println  '** Packaging artifacts ...'
-                sh scripts+'/CI/Package_Create.sh ' +  env.WORKSPACE + ' poc-workspace  ' + ' poc-app ' +  env.BUILD_ID 
-            }
-        }                
+//        stage('Package') {
+//            steps {
+//                println  '** Packaging artifacts ...'
+//                sh scripts+'/CI/Package_Create.sh ' +  env.WORKSPACE + ' poc-workspace  ' + ' poc-app ' +  env.BUILD_ID 
+//            }
+//        }                
 
         //stage('Publish') {
         //    steps {
