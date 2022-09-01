@@ -20,7 +20,7 @@ pipeline {
                 println '** Cloning on USS ...'     
                 script {
                     sh 'rm -rf *'
-                    sh 'git clone ' repo 
+                    sh 'git clone ' + repo 
                     sh 'cd poc-workspace ; git log --graph --oneline --decorate -n 3'
                 }
             }          
