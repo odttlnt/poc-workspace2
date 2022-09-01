@@ -3,11 +3,17 @@
 // for help: https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
  
 // change these values to match your configuration
-def dbbbuild ='/u/nlopez/tmp/dbb-zappbuild/build.groovy'
+def myAgent  = 'myZOS-Agent'
 def repo = 'git@github.com:nlopez1-ibm/poc-workspace.git'
+
+def dbbbuild ='/u/nlopez/tmp/dbb-zappbuild/build.groovy'
 def workspace = 'poc-workspace'
 def appname = 'poc-app'
-def myAgent  = 'myZOS-Agent'
+
+def ucdPublish ='/u/nlopez/tmp/dbb-zappbuild/scripts/UCD/dbb-ucd-packaging.groovy' 
+def buztool  = '/u/nlopez/ucd-agent/bin/buztool.sh'
+def ucdComponent = 'poc-app'
+
 
 
 // no changes required to this section 
@@ -33,6 +39,21 @@ pipeline {
                     sh 'groovyz ' + dbbbuild + ' -w ' + workspace  + ' -a ' + appname + ' -o dbb-logs -h ' + env.USER + ' poc-app/cobol/datbatch'
                 }
             }
-        }                        
+        }
+
+
+        stage('Publist to UCD ') {
+            steps {
+                println  '** Package and Publist to CodeStation...'                  
+                script {
+                    sh 'groovyz ' + ucdPublish + ' --buztool ' + buzTool  + ' --workDir ' + workspace + ' --component ' + ucdComponent + ' --versionName ${BUILD_NUMBER}'
+                }
+            }
+        }
+
+
+
+
+
     }    
 }
