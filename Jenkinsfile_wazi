@@ -1,3 +1,6 @@
+
+needs work add to other piplein for testin ...
+
 // Sample Jenkinsfile using ssh and myMazi for CI only    (Nlopez)
 // For CI/CD use the zDT  project 
 def myApp       = 'poc-app'

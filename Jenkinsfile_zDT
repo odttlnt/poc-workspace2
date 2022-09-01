@@ -1,9 +1,9 @@
-// Sample Jenkinsfile using ssh and a zDT Agent (Nlopez)
+// Sample Jenkinsfile using pGH, ssh and a zDT Agent (Nlopez)
+// tap=XXc5748804da508e6cb3ad7f077a82478b4e162151XX=tap
 // for help: https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
 // working between zDT and wazi. use wazi for faster CI Demo. Use zDT for e2e - but slower
 def myApp       = 'poc-app'
 scripts         = '/u/nlopez/tmp/dbb-zappbuild/scripts'
-
 
 pipeline {
     agent  { label 'myZOS-Agent' }    
@@ -14,8 +14,12 @@ pipeline {
             steps {
                 println '** Cloning on USS ...'                             
                 //sh 'rm -r ' + env.WORKSPACE+'/* >/dev/null 2>&1 ; ' + scripts+'/CI/Clone2.sh ' +  env.WORKSPACE + ' ' +  myApp + ' git@github.com:nlopez1-ibm/poc-workspace.git ' + env.BRANCH_NAME 
-                //sh scripts+'/CI/Clone2.sh ' +  env.WORKSPACE + '  poc-workspace  git@github.com:nlopez1-ibm/poc-workspace.git ' + env.BRANCH_NAME 
-                sh 'git -version'
+                //sh scripts+'/CI/Clone2.sh ' +  env.WORKSPACE + '  poc-workspace  git@github.com:nlopez1-ibm/poc-workspace.git ' + env.BRANCH_NAME                 
+                sh 'rm -rf *'
+                sh 'git clone git@github.com:nlopez1-ibm/poc-workspace.git'
+                sh 'cd poc-workspace ; git log --graph --oneline --decorate -n 3'
+
+
             }          
         }  
 
