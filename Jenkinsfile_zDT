@@ -2,12 +2,11 @@
 // for help: https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
 // working between zDT and wazi. use wazi for faster CI Demo. Use zDT for e2e - but slower
 def myApp       = 'poc-app'
-//scripts         = '/u/nlopez/tmp/dbb-zappbuild/scripts'
-scripts         = '/u/nlopez/waziDBB/dbb-zappbuild/scripts'
+scripts         = '/u/nlopez/tmp/dbb-zappbuild/scripts'
+
 
 pipeline {
-    //agent  { label 'myZOS-Agent' }
-    agent  { label 'myWazi-agent' }
+    agent  { label 'myZOS-Agent' }    
     options { skipDefaultCheckout(true) }
 
     stages {
