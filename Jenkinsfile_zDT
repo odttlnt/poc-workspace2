@@ -1,48 +1,33 @@
 // Sample Jenkinsfile using pGH, ssh and a zDT Agent (Nlopez)
 // tap=XXc5748804da508e6cb3ad7f077a82478b4e162151XX=tap
 // for help: https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
-// working between zDT and wazi. use wazi for faster CI Demo. Use zDT for e2e - but slower
-def myApp       = 'poc-app'
-scripts         = '/u/nlopez/tmp/dbb-zappbuild/scripts'
+ 
+// change these values to match your configuration
+def dbbbuild ='/u/nlopez/tmp/dbb-zappbuild/build.groovy'
+def repo = 'git@github.com:nlopez1-ibm/poc-workspace.git'
+//def app_workspace = 'poc-workspace'
+def app_name = 'poc-app'
+def myAgent  = 'myZOS-Agent'
 
+
+// no changes required to this section 
 pipeline {
-    agent  { label 'myZOS-Agent' }    
+    agent  { label myAgent } 
     options { skipDefaultCheckout(true) }
-
     stages {
         stage('Clone') {
             steps {
                 println '** Cloning on USS ...'                             
-                //sh 'rm -r ' + env.WORKSPACE+'/* >/dev/null 2>&1 ; ' + scripts+'/CI/Clone2.sh ' +  env.WORKSPACE + ' ' +  myApp + ' git@github.com:nlopez1-ibm/poc-workspace.git ' + env.BRANCH_NAME 
-                //sh scripts+'/CI/Clone2.sh ' +  env.WORKSPACE + '  poc-workspace  git@github.com:nlopez1-ibm/poc-workspace.git ' + env.BRANCH_NAME                 
-                sh 'rm -rf *'
-                sh 'git clone git@github.com:nlopez1-ibm/poc-workspace.git'
-                sh 'cd poc-workspace ; git log --graph --oneline --decorate -n 3'
-
-
+                sh ‘git –version’
             }          
         }  
 
         stage('Build') {
             steps {
-                println  '** SKIP    Building feature with DBB ...'                  
-                //sh scripts+'/CI/Build.sh ' + env.WORKSPACE + ' poc-workspace  ' + myApp + ' --userBuild poc-app/cobol/datbatch.cbl'
+                println  '** Building one pgm with DBB ...'                  
+                sh 'groovyz ' + dbbbuild + ' -w ' + env.wkDir + ' -a ' + app_name + " -o dbb-logs -h ' + env.USER + ' poc-app/cobol/datbatch'
             }
         }             
-
-
-//        stage('Package') {
-//            steps {
-//                println  '** Packaging artifacts ...'
-//                sh scripts+'/CI/Package_Create.sh ' +  env.WORKSPACE + ' poc-workspace  ' + ' poc-app ' +  env.BUILD_ID 
-//            }
-//        }                
-
-        //stage('Publish') {
-        //    steps {
-        //        println  '** Packaging artifacts and Publishing to UCD Code Station ...'
-        //        sh scripts+'/CD/UCD_Pub.sh ' + env.BUILD_ID + ' poc-app ' + env.WORKSPACE+'/poc-workspace  '
-        //    }
-        //}                
+           
     }    
 }
