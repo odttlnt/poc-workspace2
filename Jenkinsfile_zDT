@@ -18,17 +18,20 @@ pipeline {
         stage('Clone') {
             steps {
                 println '** Cloning on USS ...'     
-                sh 'rm -rf *'
-                sh 'git clone ' repo 
-                sh 'cd poc-workspace ; git log --graph --oneline --decorate -n 3'                      
-                
+                script {
+                    sh 'rm -rf *'
+                    sh 'git clone ' repo 
+                    sh 'cd poc-workspace ; git log --graph --oneline --decorate -n 3'
+                }
             }          
         }  
 
         stage('Build') {
             steps {
                 println  '** Building one pgm with DBB ...'                  
-                sh 'groovyz ' + dbbbuild + ' -w ' + env.wkDir + ' -a ' + app_name + ' -o dbb-logs -h ' + env.USER + ' poc-app/cobol/datbatch'
+                script {
+                    sh 'groovyz ' + dbbbuild + ' -w ' + env.wkDir + ' -a ' + app_name + ' -o dbb-logs -h ' + env.USER + ' poc-app/cobol/datbatch'
+                }
             }
         }                        
     }    
