@@ -7,14 +7,12 @@ def myAgent  = 'myZOS-Agent'
 def repo = 'git@github.com:nlopez1-ibm/poc-workspace.git'
 
 def dbbbuild ='/u/nlopez/tmp/dbb-zappbuild/build.groovy'
-def workspace = 'poc-workspace'
+def appworkspace = 'poc-workspace'
 def appname = 'poc-app'
 
 def ucdPublish ='/u/nlopez/tmp/dbb-zappbuild/scripts/UCD/dbb-ucd-packaging.groovy' 
 def buztool  = '/u/nlopez/ucd-agent/bin/buztool.sh'
 def ucdComponent = 'poc-app'
-
-
 
 // no changes required to this section 
 pipeline {
@@ -27,7 +25,7 @@ pipeline {
                 script {
                     sh 'rm -rf *'
                     sh 'git clone ' + repo 
-                    sh 'cd ' + workspace  + '; git log --graph --oneline --decorate -n 3'
+                    sh 'cd ' + appworkspace  + '; git log --graph --oneline --decorate -n 3'
                 }
             }          
         }  
@@ -36,24 +34,20 @@ pipeline {
             steps {
                 println  '** Building one pgm with DBB ...'                  
                 script {
-                    sh 'groovyz ' + dbbbuild + ' -w ' + workspace  + ' -a ' + appname + ' -o dbb-logs -h ' + env.USER + ' poc-app/cobol/datbatch'
+                    sh 'groovyz ' + dbbbuild + ' -w ${WORKSPACE}/'+appworkspace  + ' -a ' + appname + ' -o dbb-logs -h ' + env.USER + ' poc-app/cobol/datbatch.cbl'
                 }
             }
         }
 
 
-        stage('Publist to UCD ') {
+        stage('Publish') {
             steps {
-                println  '** Package and Publist to CodeStation...'                  
+                println  '** Package and Publish to UCDs CodeStation...'                  
                 script {
-                    sh 'groovyz ' + ucdPublish + ' --buztool ' + buzTool  + ' --workDir ' + workspace + ' --component ' + ucdComponent + ' --versionName ${BUILD_NUMBER}'
+                    sh 'groovyz ' + ucdPublish + ' --buztool ' + buzTool  + ' --workDir ${WORKSPACE}/'+appworkspace + ' --component ' + ucdComponent + ' --versionName ${BUILD_NUMBER}'
                 }
             }
         }
-
-
-
-
 
     }    
 }
