@@ -1,5 +1,5 @@
-// Sample Jenkinsfile using ssh and my zDT CI/CD   (Nlopez)
-// For faster CI demo use the wazi project 
+// Sample Jenkinsfile using ssh and myMazi for CI only    (Nlopez)
+// For CI/CD use the zDT  project 
 def myApp       = 'poc-app'
 scripts         = '/u/nlopez/waziDBB/dbb-zappbuild/scripts'
 
