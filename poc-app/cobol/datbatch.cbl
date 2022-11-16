@@ -32,6 +32,6 @@
       *========== static call example
       *     CALL 'DATSUB'.
            STOP RUN.
-      *==========
+      *==========  v2
        dump_num1.
            display 'Tracing num1=' num1.
