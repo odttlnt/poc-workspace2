@@ -10,13 +10,13 @@
        01 WK-AREA1.
           05  FILLER       PIC X(80).
           05  num1         PIC 9(3) value zeros.
-          05  num2         PIC 9(3) value is 005.
+          05  num2         PIC 9(3) value is 006.
       *
         COPY DATDEPND.
       * COPY DATSHARE.
       *
        PROCEDURE DIVISION.
-           DISPLAY 'DATBATCH Demo '.
+           DISPLAY 'DATBATCH Demo for demo'.
       *
       *========= display copybook literals
       *     DISPLAY 'CPYBK=DATDEPND -> ' WS-VER.
